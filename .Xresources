@@ -1,0 +1,5 @@
+XTerm*faceName: Inconsolata
+XTerm*faceSize: 11
+emacs.font: Inconsolata-11
+emacs-snapshot.font: Inconsolata-11
+emacs23.font: Inconsolata-11
