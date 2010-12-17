@@ -19,7 +19,7 @@ xmonad $ gnomeConfig
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
-        , workspaces = ["mail", "chat", "web", "code", "physics", "term", "papers", "surf", "misc"]
+        , workspaces = ["1:mail", "2:chat", "3:web", "4:code", "5:term", "6:write", "7:read", "8:bs", "9:etc"]
 --           , normalBorderColor = "#3f3c6d"
 --           , focusedBorderColor = "#4f66ff"
 }
