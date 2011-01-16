@@ -35,21 +35,21 @@
                       (floor (* 0.9
                                   (face-attribute 'default :height)))))
 
-;; (defun intelligent-kill ()
-;;   "quit the same way no matter what kind of window you are on"
-;;   (interactive)
-;; ;  (kill-buffer (buffer-name))
-;;   (if (and (not (elscreen-one-screen-p)) (elscreen-kill))
-;;       (message "Killed screen")
-;;     (if (eq (car (visible-frame-list)) (selected-frame))
-;;         ;;for parent/master frame…
-;;         (if (> (length (visible-frame-list)) 1)
-;;             ;;a parent with children present
-;;             (delete-frame (selected-frame))
-;;           ;;a parent with no children present
-;;           (save-buffers-kill-emacs))
-;;       ;;a child frame
-;;       (delete-frame (selected-frame)))))
+(defun intelligent-kill ()
+  "quit the same way no matter what kind of window you are on"
+  (interactive)
+;  (kill-buffer (buffer-name))
+  (if (and (not (elscreen-one-screen-p)) (elscreen-kill))
+      (message "Killed screen")
+    (if (eq (car (visible-frame-list)) (selected-frame))
+        ;;for parent/master frame…
+        (if (> (length (visible-frame-list)) 1)
+            ;;a parent with children present
+            (delete-frame (selected-frame))
+          ;;a parent with no children present
+          (save-buffers-kill-emacs))
+      ;;a child frame
+      (delete-frame (selected-frame)))))
 
  (setq browse-url-browser-function 'w3m-browse-url)
  (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
