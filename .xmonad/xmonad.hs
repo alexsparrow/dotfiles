@@ -27,8 +27,10 @@ myManageHook =
     [ resource  =? "Do"   --> doIgnore
     , className =? "Skype"          --> moveTo "2:chat"
     , className =? "Evolution"    --> moveTo "1:mail"
+    , className =? "Transmission" --> moveTo "8:bs"
     ]
     where moveTo = doF . W.shift
+
 
 -- Layouts
 myLayout = avoidStruts $ onWorkspace "2:chat" imLayout $ standardLayouts
@@ -37,7 +39,7 @@ myLayout = avoidStruts $ onWorkspace "2:chat" imLayout $ standardLayouts
     standardLayouts = tiled ||| Mirror tiled ||| Full ||| simpleTabbed
 
     -- notice withIM is acting on it
-    imLayout        = withIM (1/10) skype (standardLayouts)
+    imLayout        = withIM (1/10) skypeRoster Grid
 
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
@@ -51,7 +53,8 @@ myLayout = avoidStruts $ onWorkspace "2:chat" imLayout $ standardLayouts
     -- Percent of screen to increment by when resizing panes
     delta   = 3/100
 
-    skype = Title "alex_sparrow - Skype™ (Beta)" `Or` Title "Skype™ 2.1 (Beta) for Linux"
+    skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
+    --skype = Title "alex_sparrow - Skype™ (Beta)" `Or` Title "Skype™ 2.1 (Beta) for Linux"
 
 main = do
   xmproc <- spawnPipe "xmobar"
