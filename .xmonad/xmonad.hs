@@ -3,6 +3,7 @@ import XMonad.Util.EZConfig
 import XMonad.Config.Gnome
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.UrgencyHook
 import System.IO
 
 import XMonad.Actions.GridSelect
@@ -58,13 +59,14 @@ myLayout = avoidStruts $ onWorkspace "2:chat" imLayout $ standardLayouts
 
 main = do
   xmproc <- spawnPipe "xmobar"
-  xmonad $ gnomeConfig
+  xmonad $ withUrgencyHook NoUrgencyHook gnomeConfig
     { manageHook = manageHook gnomeConfig <+> composeAll myManageHook
     , modMask = mod4Mask
     , terminal = "urxvt"
     , logHook = dynamicLogWithPP $ xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 50
+                        , ppUrgent = xmobarColor "yellow" "red" . xmobarStrip
                         }
     , workspaces = ["1:mail", "2:chat", "3:web", "4:code", "5:term", "6:write", "7:read", "8:bs", "9:etc"]
     , keys = newKeys
@@ -77,5 +79,7 @@ newKeys x  = M.union (keys defaultConfig x) (M.fromList (myKeys x))
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
   [
     ((modm, xK_g), goToSelected defaultGSConfig)
+  , ((modm, xK_BackSpace), focusUrgent)
+
   ]
 
