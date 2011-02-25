@@ -21,6 +21,7 @@ import XMonad.Layout.StackTile
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Tabbed
+import Data.Ratio ((%))
 
 myManageHook :: [ManageHook]
 myManageHook =
@@ -28,6 +29,10 @@ myManageHook =
     , className =? "Skype"          --> moveTo "2:chat"
     , className =? "Evolution"    --> moveTo "1:mail"
     , className =? "Transmission" --> moveTo "8:bs"
+    , composeOne [
+      transience,
+      isFullscreen -?> doFullFloat
+      ]
     ]
     where moveTo = doF . W.shift
 
@@ -39,7 +44,7 @@ myLayout = avoidStruts $ onWorkspace "2:chat" imLayout $ standardLayouts
     standardLayouts = tiled ||| Mirror tiled ||| Full ||| simpleTabbed
 
     -- notice withIM is acting on it
-    imLayout        = withIM (1/10) skypeRoster Grid
+    imLayout        = withIM (1%7) skypeRoster Grid
 
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
