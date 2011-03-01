@@ -1,0 +1,13 @@
+set mbox_type=Maildir
+set folder="~/Mail/"
+set mask="!^\\.[^.]"
+set mbox="~/Mail/INBOX"
+set record="+.Sent"
+set postponed="+.Drafts"
+set spoolfile="~/Mail/INBOX"
+
+mailboxes `echo -n "+ "; find ~/Mail -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
+
+set sort = threads
+set sort_aux = last-date-received
+

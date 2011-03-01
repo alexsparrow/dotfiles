@@ -1,0 +1,21 @@
+# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
+# suit to get started fast.
+
+[general]
+accounts = Mail
+
+[Account Mail]
+localrepository = Local
+remoterepository = Remote
+autorefresh = 5
+quick = 10
+
+[Repository Local]
+type = Maildir
+localfolders = ~/Mail
+
+[Repository Remote]
+type = IMAP
+remotehost = alspar.tilaa.org
+remoteuser = alex
+ssl = yes
