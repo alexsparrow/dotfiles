@@ -20,3 +20,28 @@ set use_from = "yes"
 set envelope_from = "yes"
 
 
+color header magenta default '^(Date|Posted):'
+color header yellow default '^(From|Reply-To|Organization|User-Agent):'
+color header cyan default '^(To|Cc|Delivered-To|X-Original-To):'
+color header green default '^(Subject):'
+color header green default '^(Mailing-List|List|X-ML)'
+color header blue default '^(Message-ID|References|In-Reply-To):'
+color header red default '^(X-Bogosity|X-Spam|X-PerlMx-Spam)'
+color hdrdefault brightblack default
+
+color index brightgreen default ~N
+
+color tree brightyellow default
+color quoted yellow default
+color quoted1 green default
+color quoted2 magenta default
+color quoted3 blue default
+
+color body cyan default "((ftp|http|https)://|news:)[^ >)\"\t]+"
+#color body cyan default "[-a-z_0-9.+]+@[-a-z_0-9.]+\.[a-z]{2-3}"
+color normal white default
+color error green default
+color indicator white red
+color signature brightblue default
+color status white blue
+color tilde blue default
