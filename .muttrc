@@ -19,6 +19,8 @@ set from = "alex.sparrow@cern.ch"
 set use_from = "yes"
 set envelope_from = "yes"
 
+set wrapmargin = 80
+unset markers
 set timeout = 10
 alias kitty Kitty Liao <kitty.liao@cern.ch>
 
