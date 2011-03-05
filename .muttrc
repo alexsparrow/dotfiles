@@ -9,7 +9,7 @@ set spoolfile="~/Mail/INBOX"
 mailboxes `echo -n "+ "; find ~/Mail -maxdepth 1 -type d -name ".*" -printf "+'%f' "`
 
 set sort = threads
-set sort_aux = last-date-received
+set sort_aux = reverse-last-date-received
 
 set editor = "emacsclient -t -a ''"
 
@@ -18,6 +18,9 @@ set realname = "Alex Sparrow"
 set from = "alex.sparrow@cern.ch"
 set use_from = "yes"
 set envelope_from = "yes"
+
+set timeout = 10
+alias kitty Kitty Liao <kitty.liao@cern.ch>
 
 
 color header magenta default '^(Date|Posted):'
