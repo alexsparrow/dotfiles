@@ -22,8 +22,9 @@ set envelope_from = "yes"
 set wrapmargin = 80
 unset markers
 set timeout = 10
-alias kitty Kitty Liao <kitty.liao@cern.ch>
 
+set alias_file=~/.alexdot/.mutt_aliases
+source ~/.alexdot/.mutt_aliases
 
 color header magenta default '^(Date|Posted):'
 color header yellow default '^(From|Reply-To|Organization|User-Agent):'
