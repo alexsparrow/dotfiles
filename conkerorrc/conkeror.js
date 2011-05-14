@@ -20,8 +20,9 @@ for (let i = 0; i < 10; ++i) {
 
 
 define_webjump("reddit","http://www.reddit.com/r/%s");
+define_webjump("hoogle", "http://www.haskell.org/hoogle/?hoogle=%s");
 
-define_key(content_buffer_normal_keymap, "C-c n", "follow-new-buffer");
+define_key(content_buffer_normal_keymap, "C-c f", "follow-new-buffer");
 
 // copy url with C-c u
 interactive("copy-url",
