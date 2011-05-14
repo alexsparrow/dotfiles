@@ -1,3 +1,4 @@
+import Dzen
 import XMonad
 import XMonad.Util.EZConfig
 import XMonad.Config.Gnome
@@ -23,6 +24,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.Tabbed
 import Data.Ratio ((%))
+import XMonad.Util.Dmenu
 
 myManageHook :: [ManageHook]
 myManageHook =
@@ -60,22 +62,56 @@ myLayout = avoidStruts $ onWorkspace "2:chat" imLayout $ standardLayouts
     delta   = 3/100
 
     skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
-    --skype = Title "alex_sparrow - Skype™ (Beta)" `Or` Title "Skype™ 2.1 (Beta) for Linux"
+
+dzenBar :: DzenConf
+dzenBar = defaultDzen
+    -- use the default as a base and override width and
+    -- colors
+    {
+       width   = Just $ Percent 100
+    ,  height = Just 17
+    , fgColor = Just "#909090"
+    , bgColor = Just "#303030"
+    }
+
+myLogHook h = dynamicLogWithPP $ defaultPP -- the h here...
+    -- display current workspace as darkgrey on light grey (opposite of default colors)
+    { ppCurrent         = dzenColor "#303030" "#909090" . pad
+
+    -- display other workspaces which contain windows as a brighter grey
+    , ppHidden          = dzenColor "#909090" "" . pad
+
+    -- display other workspaces with no windows as a normal grey
+    , ppHiddenNoWindows = dzenColor "#606060" "" . pad
+
+    -- display the current layout as a brighter grey
+    , ppLayout          = dzenColor "#909090" "" . pad
+
+    -- if a window on a hidden workspace needs my attention, color it so
+    , ppUrgent          = dzenColor "#ff0000" "" . pad . dzenStrip
+
+    -- shorten if it goes over 100 characters
+    , ppTitle           = shorten 100
+
+    -- no separator between workspaces
+    , ppWsSep           = ""
+
+    -- put a few spaces between each object
+    , ppSep             = "  "
+
+    , ppOutput          = hPutStrLn h -- ... must match the h here
+    }
 
 main = do
-  xmproc <- spawnPipe "xmobar"
-  xmonad $ withUrgencyHook NoUrgencyHook gnomeConfig
-    { manageHook = manageHook gnomeConfig <+> composeAll myManageHook
+  d <- spawnDzen dzenBar
+  xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
+    { manageHook = composeAll myManageHook <+> manageDocks
     , modMask = mod4Mask
     , terminal = "urxvt"
-    , logHook = dynamicLogWithPP $ xmobarPP
-                        { ppOutput = hPutStrLn xmproc
-                        , ppTitle = xmobarColor "green" "" . shorten 50
-                        , ppUrgent = xmobarColor "yellow" "red" . xmobarStrip
-                        }
+    , logHook = myLogHook d
     , workspaces = ["1:mail", "2:chat", "3:web", "4:code", "5:term", "6:write", "7:read", "8:bs", "9:etc"]
     , keys = newKeys
-     , layoutHook = myLayout
+     , layoutHook = smartBorders myLayout
 --           , normalBorderColor = "#3f3c6d"
 --           , focusedBorderColor = "#4f66ff"
         }
@@ -85,6 +121,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   [
     ((modm, xK_g), goToSelected defaultGSConfig)
   , ((modm, xK_BackSpace), focusUrgent)
-
+  , ((modm, xK_p), dmenu [] >> return ())
+  , ((modm .|. shiftMask, xK_l), spawn "xscreensaver-command -lock")
   ]
 

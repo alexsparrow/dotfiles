@@ -1,5 +1,13 @@
 XTerm*faceName: Inconsolata
-XTerm*faceSize: 11
-emacs.font: Inconsolata-11
-emacs-snapshot.font: Inconsolata-11
-emacs23.font: Inconsolata-11
+XTerm*faceSize: 12
+emacs.font: Consolas-12
+emacs.FontBackend: xft
+
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+
