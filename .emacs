@@ -67,3 +67,6 @@
  '(org-level-1 ((t (:inherit outline-1 :weight bold :height 1.3))))
  '(org-todo ((t (:foreground "Pink" :weight bold)))))
 (put 'narrow-to-region 'disabled nil)
+
+(add-to-list 'load-path "~/.alexdot/emacs/vendor/gist.el")
+(require 'gist)

@@ -1,5 +1,6 @@
 
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 (column-number-mode t)
 (line-number-mode t)
 (setq inhibit-startup-message t)
