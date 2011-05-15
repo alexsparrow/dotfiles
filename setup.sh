@@ -9,3 +9,4 @@ ln -s .alexdot/.emacs
 ln -s .alexdot/.muttrc
 ln -s .alexdot/.msmtprc
 ln -s .alexdot/.offlineimaprc
+ln -s .alexdot/.gitconfig
