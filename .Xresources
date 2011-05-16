@@ -1,5 +1,3 @@
-XTerm*faceName: Inconsolata
-XTerm*faceSize: 12
 emacs.font: Consolas-11
 emacs.FontBackend: xft
 
