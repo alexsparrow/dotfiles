@@ -1,6 +1,7 @@
 
 export XMODIFIERS=@im=ibus
 export GTK_IM_MODULE="ibus"
+export QT_IM_MODULE=ibus
 
 xrandr --output DVI-0 --auto --output VGA-0 --auto --left-of DVI-0
 xsetroot -cursor_name left_ptr
