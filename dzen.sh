@@ -89,7 +89,7 @@ while true; do
    # Arrange and print the status line
  #  print "$PWEATHER $PCPUTEMP $PGTIME $PMAIL ^fg(white)${PDATE}^fg()"
 
-   print "$PMAIL ^p(100) ^fg(#909090)$PDATE" # ($PGTIME)^fg()"
+   print "$PMAIL ^p(10) ^fg(#909090)$PDATE" # ($PGTIME)^fg()"
    DATECOUNTER=$((DATECOUNTER+1))
    MAILCOUNTER=$((MAILCOUNTER+1))
    GTIMECOUNTER=$((GTIMECOUNTER+1))

@@ -9,4 +9,62 @@ Xft.antialias: 1
 Xft.dpi: 96
 Xft.rgba: rgb
 
+URxvt.foreground: yellow
+
+URxvt.depth: 32
+URxvt.saveLines:32767
+URxvt.scrollBar: false
+URxvt*font: xft:Consolas:size=10
+URxvt.letterSpace:	 -1
+URxvt*termName:    rxvt
+URxvt*shading: 30
+URxvt*inheritPixmap: true
+URxvt*tintcolor:#000000 
+
+URxvt.perl-ext-common : tabbed_new, matcher, default
+URxvt.tabbed.tabbar-fg: 5
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg:    14
+URxvt.tabbed.tab-bg:    0
+
+URxvt.tabbed_new.tabren-bg: 3
+URxvt.tabbed_new.tabdiv-fg: 8
+URxvt.tabbed_new.tabbar-fg: 8
+URxvt.tabbed_new.tabbar-bg: 0
+URxvt.tabbed_new.tabsel-fg: 1
+URxvt.tabbed_new.tabsel-bg: 8
+URxvt.tabbed_new.tab-fg:    0
+URxvt.tabbed_new.tab-bg:    8
+
+! black
+URxvt.color0  : #2E2E34343636
+URxvt.color8  : #555557575353
+! red
+URxvt.color1  : #CCCC00000000
+URxvt.color9  : #EFEF29292929
+! green
+URxvt.color2  : #4E4E9A9A0606
+URxvt.color10 : #8A8AE2E23434
+! yellow
+URxvt.color3  : #C4C4A0A00000
+URxvt.color11 : #FCFCE9E94F4F
+! blue
+URxvt.color4  : #34346565A4A4
+URxvt.color12 : #72729F9FCFCF
+! magenta
+URxvt.color5  : #757550507B7B
+URxvt.color13 : #ADAD7F7FA8A8
+! cyan
+URxvt.color6  : #060698209A9A
+URxvt.color14 : #3434E2E2E2E2
+! white
+URxvt.color7  : #D3D3D7D7CFCF
+URxvt.color15 : #EEEEEEEEECEC
+
+URxvt*foreground:White
+URxvt*background:Black
+
+URxvt.urlLauncher     : firefox
+URxvt.matcher.button  : 2
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 
