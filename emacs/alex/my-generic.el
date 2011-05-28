@@ -14,16 +14,15 @@
 (set-default 'indicate-empty-lines t)
 (set-default 'fill-column 80)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-;(toggle-scroll-bar -1)
 (scroll-bar-mode -1)
 
 ;; Trailing whitespace is unnecessary
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;; Make mutt switch to mail-mode
-(add-to-list 'auto-mode-alist '(".*mutt.*" . message-mode))                                                                   
-  (setq mail-header-separator "")                                                                                               
-  (add-hook 'message-mode-hook
+(add-to-list 'auto-mode-alist '(".*mutt.*" . message-mode))
+(setq mail-header-separator "")
+(add-hook 'message-mode-hook
           'turn-on-auto-fill
           (function
            (lambda ()
@@ -38,12 +37,17 @@
 (require 'color-theme)
 (color-theme-initialize)
 
-(color-theme-dark-laptop)
+;(color-theme-dark-laptop)
 ;(color-theme-lethe)
+(load "sunburst-theme" "Sunburst" t)
+(color-theme-sunburst)
+
 (require 'column-marker)
 
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
+
+
 
 (require 'multi-term)
 (setq multi-term-program "/bin/bash")
@@ -51,6 +55,18 @@
 (setq-default kill-read-only-ok t)
 
 (require 'pretty-mode)
+
+(require 'undo-tree)
+;(global-undo-tree-mode)
+(require 'magit)
+(require 'unbound)
+(require 'highlight-80+)
+(require 'haml-mode)
+(require 'delim-kill)
+(require 'go-mode-load)
+(if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
+    (progn
+      (sml-modeline-mode 1)))                   ;; show buffer pos in the mode line
 
 ;; Don't truncate lines
 (setq truncate-lines t)
@@ -76,6 +92,22 @@
 ; Load haskell mode
 (load "~/.alexdot/emacs/vendor/haskell-mode-2.8.0/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)		
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+
+
+(require 'ido)
+(ido-mode t)
+(ido-everywhere 1)
+
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+
+(put 'narrow-to-region 'disabled nil)
+
+(add-to-list 'load-path "~/.alexdot/emacs/vendor/gist.el")
+(require 'gist)
+
+(autoload 'scratch "scratch" nil t)

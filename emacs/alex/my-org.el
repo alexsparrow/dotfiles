@@ -2,33 +2,45 @@
 (require 'org-install)
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
 (setq org-log-done t)
-   (org-remember-insinuate)
-     (setq org-directory "~/Research/org/")
-     (setq org-default-notes-file (concat org-directory "/remember.org"))
- (setq org-agenda-files "~/Research/org/agenda_files")
+(org-remember-insinuate)
+(setq org-directory "~/Org/")
+
+(setq org-agenda-files "~/Org/agenda_files")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (setq org-export-with-LaTeX-fragments t)
 (setq org-attach-method 'cp)
 (setq org-completion-use-ido t)
 (setq org-remember-default-headline "Tasks")
-(setq org-remember-templates
-    '(("Todo" ?t "* TODO %^{Brief Description} %^g\n%?\nAdded: %U" "~/Research/org/remember.org" "Tasks")
-      ("Journal"   ?j "** %^{Head Line} %U %^g\n%i%?"  "~/Research/org/remember.org" "Journal")
-      ("Clipboard" ?c "** %^{Head Line} %U %^g\n%c\n%?"  "~/Research/org/remember.org" "Clips")
- ("Link" ?l "** %^{Head Line} %U %^g\n%^C\n%?"  "~/Research/org/remember.org" "Links")
- ("OrgLink" ?o "** %^{Head Line} %U %^g\n%a\n%?"  "~/Research/org/remember.org" "Links")
-;      ("Book" ?b "** %^{Book Title} %t :BOOK: \n%[~/.book_template.txt]\n"
-;         "~/GTD/journal.org")
-;          ("Film" ?f "** %^{Film Title} %t :FILM: \n%[~/.film_template.txt]\n"
-;         "~/GTD/journal.org")
- ;     ("Daily Review" ?a "** %t :COACH: \n%[~/.daily_review.txt]\n"
- ;        "~/GTD/journal.org")
-      ("Someday"   ?s "** %^{Someday Heading} %U\n%?\n"  "~/Research/org/someday.org" "Some Day")
-      ("Vocab"   ?v "** %^{Word?}\n%?\n"  "~/Research/org/remember.org" "Vocab")
-     )
-   )
-;(require 'org-exp-blocks)
+
+;; (setq org-capture-templates
+;;       (quote
+;;        (("t" "todo" entry (file+headline "todo.org" "inbox")
+;;          "* TODO %?%a\n %U\n"
+;;          :clock-in t
+;;          :clock-resume t))))
+
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/Org/tasks.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+	("s" "Todo" entry (file+headline "~/Org/tasks.org" "Tasks")
+             "* TODO %?\n  %i\n")
+        ("j" "Journal" entry (file+datetree "~/Org/journal.org")
+             "* %?\nEntered on %U\n  %i\n  %a")
+	("l" "Logbook" entry (file+datetree "~/Org/logbook.org")
+	 "* %?\nEntered on %U\n  %i\n  %a")
+))
+
+(custom-set-variables
+ '(org-hide-leading-stars t)
+ '(org-startup-folded nil))
+
+(global-set-key (kbd "C-c c") 'org-capture)
+(custom-set-faces
+ '(org-level-1 ((t (:inherit outline-1 :weight bold :height 1.3))))
+ '(org-todo ((t (:foreground "Pink" :weight bold)))))
 
 (require 'org-publish)
 (setq org-publish-project-alist
