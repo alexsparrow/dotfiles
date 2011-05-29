@@ -34,6 +34,8 @@
                                                           (save-buffer)
                                                           (server-edit)))))))
 
+(require 'anything)
+
 (require 'color-theme)
 (color-theme-initialize)
 

@@ -13,3 +13,8 @@
 
 (add-hook 'python-mode-hook
           '(lambda () (eldoc-mode 1)) t)
+
+(require 'anything-ipython)
+(when (require 'anything-show-completion nil t)
+   (use-anything-show-completion 'anything-ipython-complete
+                                 '(length initial-pattern)))
