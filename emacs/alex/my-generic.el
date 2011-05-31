@@ -117,3 +117,8 @@
 ; Encryption
 (require 'epa-file)
 (epa-file-enable)
+
+(require 'rainbow-delimiters)
+(setq-default frame-background-mode 'dark)
+(add-hook 'python-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'c++-mode-hook 'rainbow-delimiters-mode)

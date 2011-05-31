@@ -33,6 +33,16 @@
 	 "* %?\nEntered on %U\n  %i\n  %a")
 ))
 
+(setq org-todo-keywords
+      (quote ((sequence
+               "TODO(t)"
+               "NEXT(n)"
+               "STARTED(s)"
+               "|" "DONE(d!/!)" "CANCELLED(c@/!)")
+              (sequence "INBOX")
+	      (sequence "MEET" "|" "FINISHED(f)")
+)))
+
 (custom-set-variables
  '(org-hide-leading-stars t)
  '(org-startup-folded nil))
