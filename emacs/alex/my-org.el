@@ -23,9 +23,9 @@
 ;;          :clock-resume t))))
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/Org/tasks.org" "Tasks")
+      '(("s" "Todo" entry (file+headline "~/Org/tasks.org" "Tasks")
              "* TODO %?\n  %i\n  %a")
-	("s" "Todo" entry (file+headline "~/Org/tasks.org" "Tasks")
+	("t" "Todo" entry (file+headline "~/Org/tasks.org" "Tasks")
              "* TODO %?\n  %i\n")
         ("j" "Journal" entry (file+datetree "~/Org/journal.org")
              "* %?\nEntered on %U\n  %i\n  %a")

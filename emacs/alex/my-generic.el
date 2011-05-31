@@ -113,3 +113,7 @@
 (require 'gist)
 
 (autoload 'scratch "scratch" nil t)
+
+; Encryption
+(require 'epa-file)
+(epa-file-enable)
