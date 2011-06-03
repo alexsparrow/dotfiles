@@ -14,6 +14,7 @@
 (load "my-gnus")
 (load "my-python")
 (load "my-vala")
+(load "my-shell")
 
 (load "auctex.el" nil t t)
 (load "preview-latex.el" nil t t)
