@@ -3,16 +3,22 @@ export XMODIFIERS=@im=ibus
 export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE=ibus
 
+BGCOL='#303030'
+FGCOL='grey70'
+FONT='-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*'
+XMAILDATE=800
+XVOLUME=1370
 xrandr --output DVI-0 --auto --output VGA-0 --auto --left-of DVI-0
 xsetroot -cursor_name left_ptr
 xscreensaver -nosplash &
 setxkbmap -layout gb
 trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request  --height 15 --transparent true --tint 0x303030 &
-./.alexdot/dzen.sh | dzen2 -ta l -h 17 -bg '#303030' -fg 'grey70' -x 800 -p -e '' -w 600 -fn '-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*' &
+./.alexdot/dzen.sh | dzen2 -ta l -h 17 -bg $BGCOL -fg $FGCOL -x $XMAILDATE -p -e '' -w 600 -fn $FONT &
+./.alexdot/volume.sh | dzen2 -ta l -h 17 -bg $BGCOL -fg $FGCOL -x $XVOLUME -p -e 'button3=exit;button4=exec:$CI;button5=exec:$CD' -w 50 -fn $FONT &
 gnome-sound-applet &
 dropboxd &
 synapse &
-ibus-daemon & 
+ibus-daemon &
 xrdb -merge .Xresources
 hsetroot -fill Dropbox/Wallpapers/airship.jpg
 xcompmgr -n &
