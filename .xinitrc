@@ -18,7 +18,7 @@ trayer --edge top --align right --SetDockType true --SetPartialStrut true --expa
 gnome-sound-applet &
 dropboxd &
 synapse &
-ibus-daemon &
+ibus-daemon -x & 
 xrdb -merge .Xresources
 hsetroot -fill Dropbox/Wallpapers/airship.jpg
 xcompmgr -n &

@@ -122,3 +122,8 @@
 (setq-default frame-background-mode 'dark)
 (add-hook 'python-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'c++-mode-hook 'rainbow-delimiters-mode)
+
+(when (fboundp 'winner-mode)
+      (winner-mode 1))
+
+ (windmove-default-keybindings 'super)
