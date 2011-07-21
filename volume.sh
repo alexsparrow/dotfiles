@@ -1,5 +1,5 @@
 
-	#!/bin/bash
+#!/bin/bash
 # little dzen-thingy to control your volume
 # you need amixer (or aumix) and gdbar
 # (c) 2007 Tom Rauchenwald and Jochen Schweizer

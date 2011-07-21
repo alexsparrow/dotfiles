@@ -26,6 +26,7 @@ import XMonad.Layout.Tabbed
 import Data.Ratio ((%))
 import XMonad.Util.Dmenu
 
+import qualified XMonad.StackSet as SS
 
 myManageHook :: [ManageHook]
 myManageHook =
@@ -37,6 +38,11 @@ myManageHook =
       transience,
       isFullscreen -?> doFullFloat
       ]
+      -- Move any window related to Evo to the 8th desktop and float it (it
+      -- currently freaks out as fullscreen in xmonad). Hopefully Evo will die
+      -- soon.
+    , isInProperty "WM_NAME" "Koala" --> composeAll [moveTo "8:bs", doRectFloat (SS.RationalRect 0.1 0.05 0.3 0.7)]
+    , isInProperty "WM_NAME" "Vievo" --> moveTo "8:bs"
     ]
     where moveTo = doF . W.shift
 
