@@ -50,7 +50,12 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (custom-set-faces
  '(org-level-1 ((t (:inherit outline-1 :weight bold :height 1.3))))
- '(org-todo ((t (:foreground "Pink" :weight bold)))))
+; '(org-todo ((t (:foreground "Pink" :weight bold))))
+
+ '(org-checkbox   ((t ( :background "#859900" :foreground "#002b36" :box (:line-width 1 :style released-button)))))
+ '(org-todo       ((t ( :background "#dc322f" :foreground "#002b36" :box (:line-width 1 :style released-button)))))
+ '(org-done ((t ( :background "#859900" :foreground "#002b36" :box (:line-width 1 :style released-button)))))
+)
 
 (require 'org-publish)
 (setq org-publish-project-alist
@@ -92,13 +97,6 @@
   ;; If there is more than one, they won't work right.
  '(org-hide-leading-stars t)
  '(org-startup-folded nil))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(org-level-1 ((t (:inherit outline-1 :weight bold :height 1.3))))
- '(org-todo ((t (:foreground "Pink" :weight bold)))))
 
 (setq org-link-abbrev-alist '(("att" . org-attach-expand-link)))
 
