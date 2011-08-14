@@ -26,6 +26,8 @@ import XMonad.Layout.Tabbed
 import Data.Ratio ((%))
 import XMonad.Util.Dmenu
 
+import qualified XMonad.StackSet as SS
+
 myManageHook :: [ManageHook]
 myManageHook =
     [ resource  =? "Do"   --> doIgnore
@@ -36,6 +38,11 @@ myManageHook =
       transience,
       isFullscreen -?> doFullFloat
       ]
+      -- Move any window related to Evo to the 8th desktop and float it (it
+      -- currently freaks out as fullscreen in xmonad). Hopefully Evo will die
+      -- soon.
+    , isInProperty "WM_NAME" "Koala" --> composeAll [moveTo "8:bs", doRectFloat (SS.RationalRect 0.1 0.05 0.3 0.7)]
+    , isInProperty "WM_NAME" "Vievo" --> moveTo "8:bs"
     ]
     where moveTo = doF . W.shift
 
@@ -111,10 +118,18 @@ main = do
     , logHook = myLogHook d
     , workspaces = ["1:mail", "2:chat", "3:web", "4:code", "5:term", "6:write", "7:read", "8:bs", "9:etc"]
     , keys = newKeys
-     , layoutHook = smartBorders myLayout
+    , layoutHook = smartBorders (myLayout)
 --           , normalBorderColor = "#3f3c6d"
 --           , focusedBorderColor = "#4f66ff"
         }
+
+-- raiseVolume = spawn "aumix -v -2"
+-- lowerVolume = spawn "aumix -v +2"
+-- muteVolume = spawn "amixer -q set PCM toggle"
+
+raiseVolume = spawn "amixer -c 0 set Master 2+ unmute"
+lowerVolume = spawn "amixer -c 0 set Master 2-"
+muteVolume = spawn "amixer sset Master toggle"
 
 newKeys x  = M.union (keys defaultConfig x) (M.fromList (myKeys x))
 myKeys conf@(XConfig {XMonad.modMask = modm}) =
@@ -123,5 +138,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm, xK_BackSpace), focusUrgent)
   , ((modm, xK_p), dmenu [] >> return ())
   , ((modm .|. shiftMask, xK_l), spawn "xscreensaver-command -lock")
+  , ((modm, xK_F12), raiseVolume)
+  , ((modm, xK_F11), lowerVolume)
+  , ((modm, xK_F10), muteVolume)
   ]
+
 
