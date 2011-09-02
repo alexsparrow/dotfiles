@@ -4,3 +4,6 @@
 [submodule "z"]
 	path = z
 	url = https://github.com/rupa/z.git
+[submodule "rxvt-tabbed-new"]
+	path = rxvt-tabbed-new
+	url = git@github.com:alexsparrow/rxvt-tabbed-new.git
