@@ -23,5 +23,6 @@ ibus-daemon -x &
 xrdb -merge .Xresources
 hsetroot -fill Dropbox/Wallpapers/airship.jpg
 xcompmgr -n &
+devmon &
 exec ck-launch-session xmonad
 
