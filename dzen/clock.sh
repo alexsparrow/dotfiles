@@ -6,13 +6,13 @@
 DATE_FORMAT='^p(5)^fg(#909090)^fg(green)%a, ^fg(white)%d^fg()/%m/%Y ^fg(#FFFF00)%H:%M^fg()'
 BG='#303030'     # dzen backgrounad
 FG='grey70'     # dzen foreground
-W=250         # width of the dzen bar
+W=200         # width of the dzen bar
 GW=50         #  width of the volume gauge
 GFG='#a8a3f5' # color of the gauge
 GH=7          # height of the gauge
 GBG='#333'    # color of gauge background
-X=1000        # x position
-Y=100         # y position
+X=900        # x position
+Y=0           # y position
 H=17
 
 # Caption of the gauge

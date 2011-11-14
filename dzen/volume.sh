@@ -5,8 +5,8 @@
 
 BG='#303030'     # dzen backgrounad
 FG='grey70'     # dzen foreground
-W=150         # width of the dzen bar
-GW=50         #  width of the volume gauge
+W=80         # width of the dzen bar
+GW=30         #  width of the volume gauge
 GFG='#a8a3f5' # color of the gauge
 GH=7          # height of the gauge
 GBG='#333'    # color of gauge background
@@ -33,10 +33,16 @@ CD="amixer -c0 sset PCM 5dB- >/dev/null"
 MAX=100
 #CV="amixer -c0 get Master | awk '/^  Front Left/ { print \$4 \" \" $MAX }'"
 CV="amixer -c0 get Master | awk '/^  Mono/ {print \$4 \" \" $MAX}' | tr -d '[]%'"
+ON="amixer -c0 get Master | awk '/^  Mono/ {print \$6 }' | tr -d '[]%'"
 #CV="aumix -q | line | cut -d \" \" -f 3"
 echo "Max $MAX"
 while true; do
     echo -n $CAPTION
-    eval "$CV" | gdbar -h $GH -w $GW -fg $GFG -bg $GBG
+    MUTE=`eval "$ON"`
+    GFGmute=$GFG
+    if [ $MUTE == "off" ] ;
+    then GFGmute="red"
+    fi
+    eval "$CV" | gdbar -h $GH -w $GW -fg $GFGmute -bg $GBG
     sleep 1;
 done | dzen2 -ta c -tw $W -y $Y -x $X -fg $FG -bg $BG -e "button3=exit;button4=exec:$CI;button5=exec:$CD" -fn $FN -h 17
