@@ -27,22 +27,30 @@ import Data.Ratio ((%))
 import XMonad.Util.Dmenu
 
 import qualified XMonad.StackSet as SS
+import XMonad.Actions.DynamicWorkspaces
+
+import qualified XMonad.Prompt as XMP
+import XMonad.Prompt.Shell
+import XMonad.Prompt.XMonad
+import XMonad.Prompt.RunOrRaise
 
 myManageHook :: [ManageHook]
 myManageHook =
     [ resource  =? "Do"   --> doIgnore
+    ,  className =? "Synapse" --> doIgnore
     , className =? "Skype"          --> moveTo "2:chat"
     , className =? "Evolution"    --> moveTo "1:mail"
     , className =? "Transmission" --> moveTo "8:bs"
     , composeOne [
-      transience,
-      isFullscreen -?> doFullFloat
+      transience
+     , isFullscreen -?> doFullFloat
       ]
       -- Move any window related to Evo to the 8th desktop and float it (it
       -- currently freaks out as fullscreen in xmonad). Hopefully Evo will die
       -- soon.
     , isInProperty "WM_NAME" "Koala" --> composeAll [moveTo "8:bs", doRectFloat (SS.RationalRect 0.1 0.05 0.3 0.7)]
     , isInProperty "WM_NAME" "Vievo" --> moveTo "8:bs"
+    , className =? "Gloobus-preview"   --> doCenterFloat
     ]
     where moveTo = doF . W.shift
 
@@ -141,6 +149,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm, xK_F12), raiseVolume)
   , ((modm, xK_F11), lowerVolume)
   , ((modm, xK_F10), muteVolume)
+  , ((modm, xK_o), runOrRaisePrompt XMP.defaultXPConfig)
+  , ((modm, xK_p), spawn "dmenu_run")
   ]
-
-
