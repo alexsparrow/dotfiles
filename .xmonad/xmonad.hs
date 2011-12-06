@@ -33,6 +33,8 @@ import qualified XMonad.Prompt as XMP
 import XMonad.Prompt.Shell
 import XMonad.Prompt.XMonad
 import XMonad.Prompt.RunOrRaise
+import XMonad.Layout.Spiral
+
 
 myManageHook :: [ManageHook]
 myManageHook =
@@ -59,7 +61,7 @@ myManageHook =
 myLayout = avoidStruts $ onWorkspace "2:chat" imLayout $ standardLayouts
   where
     -- define the list of standardLayouts
-    standardLayouts = tiled ||| Mirror tiled ||| Full ||| simpleTabbed
+    standardLayouts = tiled ||| Mirror tiled ||| Full ||| simpleTabbed ||| spiral (6/7)
 
     -- notice withIM is acting on it
     imLayout        = withIM (1%7) skypeRoster Grid
@@ -144,11 +146,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   [
     ((modm, xK_g), goToSelected defaultGSConfig)
   , ((modm, xK_BackSpace), focusUrgent)
-  , ((modm, xK_p), dmenu [] >> return ())
+  , ((modm, xK_p), spawn "exe=`dmenu_run -b -nb black -nf yellow -sf yellow` && eval \"exec $exe\"")
   , ((modm .|. shiftMask, xK_l), spawn "xscreensaver-command -lock")
   , ((modm, xK_F12), raiseVolume)
   , ((modm, xK_F11), lowerVolume)
   , ((modm, xK_F10), muteVolume)
   , ((modm, xK_o), runOrRaisePrompt XMP.defaultXPConfig)
-  , ((modm, xK_p), spawn "dmenu_run")
+  , ((modm, xK_s), shellPrompt XMP.defaultXPConfig)
+  , ((modm, xK_f), spawn "firefox")
   ]
