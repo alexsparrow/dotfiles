@@ -12,6 +12,7 @@ set sort = threads
 set sort_aux = reverse-last-date-received
 
 set editor = "emacsclient -t -a ''"
+#set editor = "nano"
 
 set sendmail = "/usr/bin/msmtp"
 set realname = "Alex Sparrow"
