@@ -23,10 +23,12 @@ echo $! > ./.alexdot/dzen/battery.pid
 #./.alexdot/hostsup.sh | dzen2 -ta 1 -h 17 -bg $BGCOL -fg $FGCOL -x 0 -p -e '' -w 800 -xs 2 -fn $FONT &
 gnome-sound-applet &
 dropboxd &
+offlineimap &
 synapse &
+urxvtd &
 ibus-daemon -x &
 xrdb -merge .Xresources
-hsetroot -fill Dropbox/Wallpapers/airship.jpg
+hsetroot -fill ~/Documents/RAEVONA___Docking_Towers_by_ANTIFAN_REAL.jpg
 xcompmgr -n &
 devmon &
 exec ck-launch-session xmonad
