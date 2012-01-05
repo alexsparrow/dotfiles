@@ -8,7 +8,8 @@ accounts = Mail
 localrepository = Local
 remoterepository = Remote
 autorefresh = 5
-quick = 10
+quick = 20
+postsynchook = notmuch new
 
 [Repository Local]
 type = Maildir
@@ -16,6 +17,6 @@ localfolders = ~/Mail
 
 [Repository Remote]
 type = IMAP
-remotehost = alspar.tilaa.org
+remotehost = alspar2.tilaa.org
 remoteuser = alex
 ssl = yes
