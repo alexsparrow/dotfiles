@@ -124,7 +124,7 @@ main = do
   xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
     { manageHook = composeAll myManageHook <+> manageDocks
     , modMask = mod4Mask
-    , terminal = "urxvt"
+    , terminal = "urxvtc"
     , logHook = myLogHook d
     , workspaces = ["1:mail", "2:chat", "3:web", "4:code", "5:term", "6:write", "7:read", "8:bs", "9:etc"]
     , keys = newKeys
@@ -154,4 +154,5 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm, xK_o), runOrRaisePrompt XMP.defaultXPConfig)
   , ((modm, xK_s), shellPrompt XMP.defaultXPConfig)
   , ((modm, xK_f), spawn "firefox")
+  , ((modm, xK_x), spawn "emacsclient -c -n -a '' ")
   ]
