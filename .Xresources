@@ -19,9 +19,10 @@ URxvt.letterSpace:	 -1
 URxvt*termName:    rxvt
 URxvt*shading: 30
 URxvt*inheritPixmap: true
-URxvt*tintcolor:#000000 
+URxvt*tintcolor:#000000
+URxvt.urgentOnBell: true
 
-URxvt.perl-ext-common : tabbed_new, matcher, default
+URxvt.perl-ext-common: tabbed_new,keyboard-select,url-select,clipboard,default,searchable-scrollback
 URxvt.tabbed.tabbar-fg: 5
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg:    14
@@ -35,6 +36,20 @@ URxvt.tabbed_new.tabsel-fg: 1
 URxvt.tabbed_new.tabsel-bg: 8
 URxvt.tabbed_new.tab-fg:    0
 URxvt.tabbed_new.tab-bg:    8
+
+URxvt.urlLauncher: firefox
+URxvt.underlineURLs: true
+!URxvt.matcher.button  : 2
+!URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+URxvt.copyCommand:  xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
 
 ! black
 URxvt.color0  : #2E2E34343636
@@ -63,8 +78,3 @@ URxvt.color15 : #EEEEEEEEECEC
 
 URxvt*foreground:White
 URxvt*background:Black
-
-URxvt.urlLauncher     : firefox
-URxvt.matcher.button  : 2
-URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
-
