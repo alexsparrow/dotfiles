@@ -155,4 +155,5 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm, xK_s), shellPrompt XMP.defaultXPConfig)
   , ((modm, xK_f), spawn "firefox")
   , ((modm, xK_x), spawn "emacsclient -c -n -a '' ")
+  , ((modm, xK_BackSpace), focusUrgent)
   ]
