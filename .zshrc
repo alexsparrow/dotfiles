@@ -5,7 +5,7 @@ export ZSH=$ALEXDOT/oh-my-zsh
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="risto"
+export ZSH_THEME="alspar"
 
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"

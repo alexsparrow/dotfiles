@@ -27,22 +27,32 @@ import Data.Ratio ((%))
 import XMonad.Util.Dmenu
 
 import qualified XMonad.StackSet as SS
+import XMonad.Actions.DynamicWorkspaces
+
+import qualified XMonad.Prompt as XMP
+import XMonad.Prompt.Shell
+import XMonad.Prompt.XMonad
+import XMonad.Prompt.RunOrRaise
+import XMonad.Layout.Spiral
+
 
 myManageHook :: [ManageHook]
 myManageHook =
     [ resource  =? "Do"   --> doIgnore
+    ,  className =? "Synapse" --> doIgnore
     , className =? "Skype"          --> moveTo "2:chat"
     , className =? "Evolution"    --> moveTo "1:mail"
     , className =? "Transmission" --> moveTo "8:bs"
     , composeOne [
-      transience,
-      isFullscreen -?> doFullFloat
+      transience
+     , isFullscreen -?> doFullFloat
       ]
       -- Move any window related to Evo to the 8th desktop and float it (it
       -- currently freaks out as fullscreen in xmonad). Hopefully Evo will die
       -- soon.
     , isInProperty "WM_NAME" "Koala" --> composeAll [moveTo "8:bs", doRectFloat (SS.RationalRect 0.1 0.05 0.3 0.7)]
     , isInProperty "WM_NAME" "Vievo" --> moveTo "8:bs"
+    , className =? "Gloobus-preview"   --> doCenterFloat
     ]
     where moveTo = doF . W.shift
 
@@ -51,7 +61,7 @@ myManageHook =
 myLayout = avoidStruts $ onWorkspace "2:chat" imLayout $ standardLayouts
   where
     -- define the list of standardLayouts
-    standardLayouts = tiled ||| Mirror tiled ||| Full ||| simpleTabbed
+    standardLayouts = tiled ||| Mirror tiled ||| Full ||| simpleTabbed ||| spiral (6/7)
 
     -- notice withIM is acting on it
     imLayout        = withIM (1%7) skypeRoster Grid
@@ -114,7 +124,7 @@ main = do
   xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
     { manageHook = composeAll myManageHook <+> manageDocks
     , modMask = mod4Mask
-    , terminal = "urxvt"
+    , terminal = "urxvtc"
     , logHook = myLogHook d
     , workspaces = ["1:mail", "2:chat", "3:web", "4:code", "5:term", "6:write", "7:read", "8:bs", "9:etc"]
     , keys = newKeys
@@ -136,11 +146,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   [
     ((modm, xK_g), goToSelected defaultGSConfig)
   , ((modm, xK_BackSpace), focusUrgent)
-  , ((modm, xK_p), dmenu [] >> return ())
+  , ((modm, xK_p), spawn "exe=`dmenu_run -b -nb black -nf yellow -sf yellow` && eval \"exec $exe\"")
   , ((modm .|. shiftMask, xK_l), spawn "xscreensaver-command -lock")
   , ((modm, xK_F12), raiseVolume)
   , ((modm, xK_F11), lowerVolume)
   , ((modm, xK_F10), muteVolume)
+  , ((modm, xK_o), runOrRaisePrompt XMP.defaultXPConfig)
+  , ((modm, xK_s), shellPrompt XMP.defaultXPConfig)
+  , ((modm, xK_f), spawn "firefox")
+  , ((modm, xK_x), spawn "emacsclient -c -n -a '' ")
+  , ((modm, xK_BackSpace), focusUrgent)
   ]
-
-

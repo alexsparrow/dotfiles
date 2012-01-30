@@ -12,6 +12,7 @@ set sort = threads
 set sort_aux = reverse-last-date-received
 
 set editor = "emacsclient -t -a ''"
+#set editor = "nano"
 
 set sendmail = "/usr/bin/msmtp"
 set realname = "Alex Sparrow"
@@ -19,9 +20,19 @@ set from = "alex.sparrow@cern.ch"
 set use_from = "yes"
 set envelope_from = "yes"
 
-set wrapmargin = 80
+# Oops this is the space to leave at the edge of the terminal!
+set wrapmargin = 2
 unset markers
 set timeout = 10
+set beep_new
+
+macro index <F8> \
+      "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
+      "search mail (using notmuch)"
+
+ macro index <F9> \
+       "<enter-command>unset wait_key<enter><pipe-message>mutt-notmuch thread<enter><change-folder-readonly>~/.cache/mutt_results<enter><enter-command>set wait_key<enter>" \
+       "search and reconstruct owning thread (using notmuch)"
 
 set alias_file=~/.alexdot/.mutt_aliases
 source ~/.alexdot/.mutt_aliases

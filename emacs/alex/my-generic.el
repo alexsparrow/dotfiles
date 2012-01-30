@@ -123,7 +123,22 @@
 (add-hook 'python-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'c++-mode-hook 'rainbow-delimiters-mode)
 
+; Winner-mode + windmove with Windows key
 (when (fboundp 'winner-mode)
       (winner-mode 1))
+(windmove-default-keybindings 'super)
 
- (windmove-default-keybindings 'super)
+; Commands for building thesis
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list '("SCons" "scons %(PDF)" TeX-run-command nil t)))
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list '("SConsClean" "scons -c %(PDF)" TeX-run-command nil t)))
+
+; Coffee-script mode
+(require 'coffee-mode)
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2))
+
+(add-hook 'coffee-mode-hook
+  '(lambda() (coffee-custom)))
