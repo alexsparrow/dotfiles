@@ -92,7 +92,7 @@
 (winner-mode 1)
 
 ; Load haskell mode
-(load "~/.alexdot/emacs/vendor/haskell-mode-2.8.0/haskell-site-file")
+(load "~/.emacs.d/vendor/haskell-mode-2.8.0/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -109,7 +109,7 @@
 
 (put 'narrow-to-region 'disabled nil)
 
-(add-to-list 'load-path "~/.alexdot/emacs/vendor/gist.el")
+(add-to-list 'load-path "~/.emacs.d/vendor/gist.el")
 (require 'gist)
 
 (autoload 'scratch "scratch" nil t)
