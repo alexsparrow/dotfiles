@@ -1,1 +1,2 @@
-application/pdf; ~/.alexdot/mutt_open.sh %s pdf
+application/*; ~/.alexdot/mutt_open.sh %s -
+image/*; ~/.alexdot/mutt_open.sh %s -
