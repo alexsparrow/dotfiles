@@ -25,7 +25,3 @@ source $ZSH/oh-my-zsh.sh
 # sources
 source $ALEXDOT/aliases.sh
 source $ALEXDOT/exports.sh
-source $ALEXDOT/z/z.sh
-function precmd () {
-          z --add "$(pwd -P)"
-}
