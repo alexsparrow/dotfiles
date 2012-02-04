@@ -23,5 +23,5 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # sources
-source $ALEXDOT/aliases.sh
-source $ALEXDOT/exports.sh
+source $ALEXDOT/shell/aliases.sh
+source $ALEXDOT/shell/exports.sh

@@ -5,5 +5,5 @@ ALEXDOT=$HOME/.alexdot
 
 # sources
 source $ALEXDOT/bash/git-completion.bash
-source $ALEXDOT/aliases.sh
-source $ALEXDOT/exports.sh
+source $ALEXDOT/shell/aliases.sh
+source $ALEXDOT/shell/exports.sh
