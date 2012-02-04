@@ -6,8 +6,7 @@ export QT_IM_MODULE=ibus
 BGCOL='#303030'
 FGCOL='grey70'
 FONT='-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*'
-XMAILDATE=900
-XVOLUME=1200
+
 #xrandr --output DVI-0 --auto --output VGA-0 --auto --left-of DVI-0
 xsetroot -cursor_name left_ptr
 xset -b
