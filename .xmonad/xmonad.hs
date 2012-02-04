@@ -35,6 +35,8 @@ import XMonad.Prompt.XMonad
 import XMonad.Prompt.RunOrRaise
 import XMonad.Layout.Spiral
 
+import XMonad.Actions.SpawnOn
+
 
 myManageHook :: [ManageHook]
 myManageHook =
@@ -153,7 +155,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm, xK_F10), muteVolume)
   , ((modm, xK_o), runOrRaisePrompt XMP.defaultXPConfig)
   , ((modm, xK_s), shellPrompt XMP.defaultXPConfig)
-  , ((modm, xK_f), spawn "firefox")
-  , ((modm, xK_x), spawn "emacsclient -c -n -a '' ")
+  , ((modm, xK_f), spawnHere "firefox")
+  , ((modm, xK_x), spawnHere "emacsclient -c -n -a '' ")
   , ((modm, xK_BackSpace), focusUrgent)
+  , ((modm, xK_F9), spawn "mpc toggle")
   ]

@@ -47,7 +47,6 @@ color header red default '^(X-Bogosity|X-Spam|X-PerlMx-Spam)'
 color hdrdefault brightblack default
 
 color index brightgreen default ~N
-
 color tree brightyellow default
 color quoted yellow default
 color quoted1 green default
@@ -63,5 +62,9 @@ color signature brightblue default
 color status white blue
 color tilde blue default
 
+#source ~/.alexdot/cmauch.mutt_colors
+
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+set pager_index_lines=10

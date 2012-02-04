@@ -11,3 +11,4 @@ ln -s .alexdot/.msmtprc
 ln -s .alexdot/.offlineimaprc
 ln -s .alexdot/.gitconfig
 ln -s .alexdot/.mailcap
+ln -s .alexdot/.ssh

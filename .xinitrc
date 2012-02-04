@@ -32,3 +32,11 @@ hsetroot -fill ~/Documents/RAEVONA___Docking_Towers_by_ANTIFAN_REAL.jpg
 xcompmgr -n &
 devmon &
 exec ck-launch-session xmonad
+
+killall -9 trayer
+killall -9 dzen2
+killall ibus-daemon
+killall dropboxd
+killall offlineimap
+killall devmon
+killall xcompmgr
