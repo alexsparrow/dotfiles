@@ -20,7 +20,7 @@ echo $! > ./.alexdot/dzen/clock.pid
 echo $! > ./.alexdot/dzen/volume.pid
 ./.alexdot/dzen/battery.sh &
 echo $! > ./.alexdot/dzen/battery.pid
-#./.alexdot/hostsup.sh | dzen2 -ta 1 -h 17 -bg $BGCOL -fg $FGCOL -x 0 -p -e '' -w 800 -xs 2 -fn $FONT &
+#./.alexdot/dzen/hostsup.sh | dzen2 -ta 1 -h 17 -bg $BGCOL -fg $FGCOL -x 0 -p -e '' -w 800 -xs 2 -fn $FONT &
 gnome-sound-applet &
 dropboxd &
 offlineimap &
