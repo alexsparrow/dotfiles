@@ -24,7 +24,7 @@ echo $! > ./.alexdot/dzen/battery.pid
 gnome-sound-applet &
 dropboxd &
 offlineimap &
-synapse &
+#synapse &
 urxvtd &
 ibus-daemon -x &
 xrdb -merge .Xresources
