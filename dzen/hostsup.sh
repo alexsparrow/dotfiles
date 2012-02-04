@@ -6,7 +6,7 @@ ping() {
     local i;
     for i in $HOSTS
     {
-	print -n '^fg(khaki)' $i '^fg()': $(~/.alexdot/ping.sh $i)' '
+	print -n '^fg(khaki)' $i '^fg()': $(~/.alexdot/dzen/ping.sh $i)' '
     }
 }
 
