@@ -1,0 +1,14 @@
+.dot.conf -> ~/.dot.conf
+.xinitrc -> ~/.xinitrc
+.zshrc -> ~/.zshrc
+.bashrc -> ~/.bashrc
+.xmonad -> ~/.xmonad
+.fonts.conf -> ~/.fonts.conf
+.Xresources -> ~/.Xresources
+.emacs -> ~/.emacs
+.emacs.d -> ~/.emacs.d
+.muttrc -> ~/.muttrc
+.offlineimaprc -> ~/.offlineimaprc
+.gitconfig -> ~/.gitconfig
+.mailcap -> ~/.mailcap
+.ssh ~/.ssh

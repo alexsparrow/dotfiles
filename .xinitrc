@@ -1,3 +1,4 @@
+source ~/.dot.conf
 
 export XMODIFIERS=@im=ibus
 export GTK_IM_MODULE="ibus"
@@ -13,11 +14,11 @@ xset -b
 xscreensaver -nosplash &
 setxkbmap -layout gb
 trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request  --height 15 --transparent true --tint 0x303030 &
-./.alexdot/dzen/clock.sh &
+$DOTPATH/dzen/clock.sh &
 echo $! > ./.alexdot/dzen/clock.pid
-./.alexdot/dzen/volume.sh &
+$DOTPATH/dzen/volume.sh &
 echo $! > ./.alexdot/dzen/volume.pid
-./.alexdot/dzen/battery.sh &
+$DOTPATH/dzen/battery.sh &
 echo $! > ./.alexdot/dzen/battery.pid
 #./.alexdot/dzen/hostsup.sh | dzen2 -ta 1 -h 17 -bg $BGCOL -fg $FGCOL -x 0 -p -e '' -w 800 -xs 2 -fn $FONT &
 gnome-sound-applet &

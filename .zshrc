@@ -1,7 +1,7 @@
-ALEXDOT=$HOME/.alexdot
+source ~/.dot.conf
 # Path to your oh-my-zsh configuration.
 
-export ZSH=$ALEXDOT/oh-my-zsh
+export ZSH=$DOTPATH/oh-my-zsh
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -23,5 +23,5 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # sources
-source $ALEXDOT/shell/aliases.sh
-source $ALEXDOT/shell/exports.sh
+source $DOTPATH/shell/aliases.sh
+source $DOTPATH/shell/exports.sh
