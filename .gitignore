@@ -1,0 +1,12 @@
+\#*\#
+.\#*
+*.pid
+*~
+.skyped/*.pem
+.skyped/*.cnf
+.skyped/*.rnd
+*.o
+*.hi
+.mpd
+.xmonad/history
+.xmonad/xmonad*
