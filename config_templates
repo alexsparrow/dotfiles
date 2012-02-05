@@ -1,0 +1,3 @@
+.skyped/skyped.conf.tmpl -> .skyped/skyped.conf
+.gitconfig.tmpl -> .gitconfig
+.msmtprc.tmpl -> .msmtprc

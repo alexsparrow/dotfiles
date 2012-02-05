@@ -1,4 +1,3 @@
-.dot.conf -> ~/.dot.conf
 .xinitrc -> ~/.xinitrc
 .zshrc -> ~/.zshrc
 .bashrc -> ~/.bashrc
