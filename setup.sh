@@ -25,6 +25,11 @@ function file_last_rev {
     echo $@
 }
 
+function git_ignore {
+    RES=$(grep -q $1 .gitignore)
+    [ $? -eq 0 ] || { echo "Adding $1 to .gitignore"; echo $1 >> .gitignore; }
+}
+
 # Given previous git revision $1 and new revision $2
 # Create a patch taking file $3 from revision $1 -> $2
 # Apply to file $TARGET to get $TARGET.new
@@ -120,6 +125,7 @@ do
     eval TARGET=$DOTPATH/$TARGET
     echo "Template file: $DEP"
 
+    git_ignore $2
     X=`is_in_git $SOURCE`
     if [ $? -ne 0 ] || [ ! -e $SOURCE ]
     then
