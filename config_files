@@ -11,4 +11,4 @@
 .offlineimaprc -> ~/.offlineimaprc
 .gitconfig -> ~/.gitconfig
 .mailcap -> ~/.mailcap
-.ssh ~/.ssh
+.ssh -> ~/.ssh
