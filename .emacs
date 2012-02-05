@@ -7,6 +7,7 @@
 
 ; Start server
 (server-start)
+(load "my-secret")
 (load "my-org")
 (load "my-generic")
 (load "my-uniquify")

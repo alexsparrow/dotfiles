@@ -74,11 +74,6 @@
 (setq truncate-lines t)
 (setq truncate-partial-width-windows nil)
 
-(setq user-full-name "Alex Sparrow"
-      mail-from-style 'angles
-      user-mail-address "alex.sparrow@cern.ch"
-      mail-default-reply-to user-mail-address)
-
 (setq browse-url-browser-function 'browse-url-firefox
       browse-url-new-window-flag t
       browse-url-firefox-new-window-is-tab t)
