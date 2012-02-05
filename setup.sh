@@ -25,6 +25,7 @@ function file_last_rev {
     echo $@
 }
 
+# Check to see if a given path is
 function git_ignore {
     RES=$(grep -q $1 .gitignore)
     [ $? -eq 0 ] || { echo "Adding $1 to .gitignore"; echo $1 >> .gitignore; }
@@ -42,11 +43,13 @@ function git_patch {
     TEMPF=$(mktemp)
     git diff -p $OLD_REV $NEW_REV -- $SOURCE > $TEMPF
     TEMPF2=$(mktemp)
-    patch $TARGET -o $TEMPF2 < $TEMPF
+    X=$(patch --merge $TARGET -o $TEMPF2 < $TEMPF)
+    PATCHED_SWEET=$?
     sed "/_LAST_REVISION_/ c\
          # _LAST_REVISION_ $NEW_REV" $TEMPF2 > $TARGET.new
     rm $TEMPF
     rm $TEMPF2
+    return $PATCHED_SWEET
 }
 
 # Check if the global config file exists. If not link it.
@@ -151,9 +154,13 @@ do
 	if [ ! "$OLD_REV" == "$GIT_REV" ]
 	then
 	    echo "-> Change detected: old = $OLD_REV, new = $GIT_REV"
-	    OUT=$(git_patch $OLD_REV $GIT_REV $SOURCE $TARGET)
-	    echo "-> Attempted patch: $TARGET.new"
-	    echo "-> Check the patch is OK and replace"
+	    $(git_patch $OLD_REV $GIT_REV $SOURCE $TARGET)
+	    if [ $? -ne 0 ]
+	    then
+		echo "-> Patch problematic. Merge $TARGET.new by hand."
+	    else
+		echo "-> Patched $TARGET.new . Check and replace."
+	    fi
 	else
 	    echo "File up to date: $SOURCE @ $GIT_REV"
 	fi
