@@ -10,3 +10,6 @@
 .mpd
 .xmonad/history
 .xmonad/xmonad*
+.skyped/skyped.conf
+.gitconfig
+.msmtprc
