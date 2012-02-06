@@ -34,8 +34,8 @@ macro index <F8> \
        "<enter-command>unset wait_key<enter><pipe-message>mutt-notmuch thread<enter><change-folder-readonly>~/.cache/mutt_results<enter><enter-command>set wait_key<enter>" \
        "search and reconstruct owning thread (using notmuch)"
 
-set alias_file=~/.alexdot/.mutt_aliases
-source ~/.alexdot/.mutt_aliases
+set alias_file=~/.dotprivate/.mutt_aliases
+source ~/.dotprivate/.mutt_aliases
 
 color header magenta default '^(Date|Posted):'
 color header yellow default '^(From|Reply-To|Organization|User-Agent):'
