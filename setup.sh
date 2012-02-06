@@ -31,6 +31,15 @@ function git_ignore {
     [ $? -eq 0 ] || { echo "Adding $1 to .gitignore"; echo $1 >> .gitignore; }
 }
 
+function mkpatch {
+    ORIG=$1
+    NEW=$2
+    TEMP=$(mktemp)
+    sed "/_LAST_REVISION_/d" $NEW > $TEMP
+    diff -ud $ORIG $TEMP > $NEW.patch
+    rm $TEMP
+}
+
 # Given previous git revision $1 and new revision $2
 # Create a patch taking file $3 from revision $1 -> $2
 # Apply to file $TARGET to get $TARGET.new
@@ -162,7 +171,9 @@ do
 		echo "-> Patched $TARGET.new . Check and replace."
 	    fi
 	else
-	    echo "File up to date: $SOURCE @ $GIT_REV"
+	    echo "-> File up to date: $SOURCE @ $GIT_REV"
+	    echo "-> Making patch file $TARGET.patch"
+	    mkpatch $SOURCE $TARGET
 	fi
     fi
     echo
