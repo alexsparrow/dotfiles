@@ -13,3 +13,4 @@
 .skyped/skyped.conf
 .gitconfig
 .msmtprc
+.emacs.d/alex/my-secret.el
