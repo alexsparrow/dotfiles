@@ -159,4 +159,5 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm, xK_x), spawnHere "emacsclient -c -n -a '' ")
   , ((modm, xK_BackSpace), focusUrgent)
   , ((modm, xK_F9), spawn "mpc toggle")
+  , ((modm, xK_F8), spawn "~/.alexdot/bin/touchpad.sh")
   ]
