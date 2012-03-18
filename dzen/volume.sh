@@ -37,13 +37,13 @@ MAX=100
 CV="amixer -c0 get Master | awk '/^  Mono/ {print \$4 \" \" $MAX}' | tr -d '[]%'"
 ON="amixer -c0 get Master | awk '/^  Mono/ {print \$6 }' | tr -d '[]%'"
 #CV="aumix -q | line | cut -d \" \" -f 3"
-echo "Max $MAX"
+
 while true; do
     echo -n $CAPTION
     MUTE=`eval "$ON"`
     GFGmute=$GFG
     if [ $MUTE == "off" ] ;
-    then GFGmute="red"
+    then GFGmute="#ff4747"
     fi
     eval "$CV" | gdbar -h $GH -w $GW -fg $GFGmute -bg $GBG
     sleep 1;
