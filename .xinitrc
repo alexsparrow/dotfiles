@@ -6,9 +6,6 @@ export XMODIFIERS=@im=ibus
 export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE=ibus
 
-BGCOL='#303030'
-FGCOL='grey70'
-FONT='-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*'
 TRAYER_OPTS='--edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request  --height 15 --transparent true --tint 0x303030'
 
 #xrandr --output DVI-0 --auto --output VGA-0 --auto --left-of DVI-0
@@ -23,10 +20,11 @@ dotc_stop_all
 dotc_start_bkg $DOTPATH/dzen/clock.sh clock
 dotc_start_bkg $DOTPATH/dzen/volume.sh volume
 dotc_start_bkg $DOTPATH/dzen/battery.sh battery
-dotc_start_bkg "trayer $TRAYER_OPTS" trayer
+dotc_start_bkg $DOTPATH/dzen/mpc.sh mpc
+dotc_start_bkg $DOTPATH/dzen/trayer.sh trayer
 dotc_start_log devmon devmon
 dotc_start_log dropboxd dropbox
-dotc_start_log offlineimap
+dotc_start_log offlineimap offlineimap
 doct_start_log "xcompmgr -n" xcompmgr
 ibus-daemon -x &
 urxvtd &

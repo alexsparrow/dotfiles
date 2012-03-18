@@ -5,19 +5,23 @@
 
 # 09/11/2011 Alex: had to change "line" to "head -1"
 #		   added height parameter
+#                  moved config options into separate file
 
-BG='#303030'     # dzen backgrounad
-FG='grey70'     # dzen foreground
-W=80     # width of the dzen bar
+source ~/.dot.conf
+source $DOTPATH/dzen/config.sh
+
+source $DOTPATH/shell/display_info.sh
+DISP_WIDTH=$(display_width)
+DISP_HEIGHT=$(display_height)
+
+W=50     # width of the dzen bar
 GW=30      # width of the gauge
 GFG='#999'  # color of the gauge
 GH=7       # height of the gauge
 GBG='#333'  # color of gauge background
-X=1180       # x position
+X=`expr $DISP_WIDTH - 200 - $W` # x position
 Y=0    # y position
 H=17
-
-FN='-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*'
 
 STATEFILE='/proc/acpi/battery/BAT0/state' # battery's state file
 INFOFILE='/sys/class/power_supply/BAT0/charge_now'   # battery's info file
