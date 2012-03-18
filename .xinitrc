@@ -6,8 +6,6 @@ export XMODIFIERS=@im=ibus
 export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE=ibus
 
-TRAYER_OPTS='--edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request  --height 15 --transparent true --tint 0x303030'
-
 #xrandr --output DVI-0 --auto --output VGA-0 --auto --left-of DVI-0
 xsetroot -cursor_name left_ptr
 xset -b
