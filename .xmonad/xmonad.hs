@@ -88,6 +88,7 @@ dzenBar = defaultDzen
     -- colors
     {
        width   = Just $ Percent 100
+    , font = Just "Consolas-10"
     ,  height = Just 17
     , fgColor = Just "#909090"
     , bgColor = Just "#303030"
