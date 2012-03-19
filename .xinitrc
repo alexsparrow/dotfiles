@@ -15,11 +15,12 @@ xrdb -merge .Xresources
 
 dotc_stop_all
 
-dotc_start_bkg $DOTPATH/dzen/clock.sh clock
-dotc_start_bkg $DOTPATH/dzen/volume.sh volume
-dotc_start_bkg $DOTPATH/dzen/battery.sh battery
-dotc_start_bkg $DOTPATH/dzen/mpc.sh mpc
-dotc_start_bkg $DOTPATH/dzen/trayer.sh trayer
+dotc_panels $DOTPATH/dzen/panels.conf
+# dotc_start_bkg $DOTPATH/dzen/clock.sh clock
+# dotc_start_bkg $DOTPATH/dzen/volume.sh volume
+# dotc_start_bkg $DOTPATH/dzen/battery.sh battery
+# dotc_start_bkg $DOTPATH/dzen/mpc.sh mpc
+# dotc_start_bkg $DOTPATH/dzen/trayer.sh trayer
 dotc_start_log devmon devmon
 dotc_start_log dropboxd dropbox
 dotc_start_log offlineimap offlineimap

@@ -17,10 +17,9 @@ GW=30
 GFG='#aecf96'
 GBG='#37383a'
 
-W=50
+W=$2
 H=17
-X=0
-X=`expr $DISP_WIDTH - 300 - $W`
+X=$1
 Y=0
 WIDTH=500
 
