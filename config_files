@@ -11,3 +11,5 @@
 .gitconfig -> ~/.gitconfig
 .mailcap -> ~/.mailcap
 .ssh -> ~/.ssh
+.vimrc -> ~/.vimrc
+vim -> ~/.vim

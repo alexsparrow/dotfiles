@@ -89,6 +89,7 @@ dzenBar = defaultDzen
     -- colors
     {
        width   = Just $ Percent 100
+    , font = Just "Consolas-10"
     ,  height = Just 17
     , fgColor = Just "#909090"
     , bgColor = Just "#303030"
@@ -164,5 +165,5 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
 --  , ((modm, xK_c), spawnHere "emacsclient -c -n -a '' 'org-protocol:/capture:/x/foo'")
   , ((modm, xK_c), spawnHere "emacsclient -c -n -a '' -e '(make-capture-frame-capture)'")
   , ((modm, xK_z), spawnHere "emacsclient -c -n -a '' -e '(make-capture-frame)'")
-
+  , ((modm, xK_F8), spawn "~/.alexdot/bin/touchpad.sh")
   ]

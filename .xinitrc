@@ -1,42 +1,34 @@
 source ~/.dot.conf
 
+source $DOTPATH/shell/dotc_utils.sh
+
 export XMODIFIERS=@im=ibus
 export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE=ibus
-
-BGCOL='#303030'
-FGCOL='grey70'
-FONT='-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*'
 
 #xrandr --output DVI-0 --auto --output VGA-0 --auto --left-of DVI-0
 xsetroot -cursor_name left_ptr
 xset -b
 xscreensaver -nosplash &
 setxkbmap -layout gb
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --widthtype request  --height 15 --transparent true --tint 0x303030 &
-$DOTPATH/dzen/clock.sh &
-echo $! > ./.alexdot/dzen/clock.pid
-$DOTPATH/dzen/volume.sh &
-echo $! > ./.alexdot/dzen/volume.pid
-$DOTPATH/dzen/battery.sh &
-echo $! > ./.alexdot/dzen/battery.pid
-#./.alexdot/dzen/hostsup.sh | dzen2 -ta 1 -h 17 -bg $BGCOL -fg $FGCOL -x 0 -p -e '' -w 800 -xs 2 -fn $FONT &
-gnome-sound-applet &
-dropboxd &
-offlineimap &
-#synapse &
-urxvtd &
-ibus-daemon -x &
 xrdb -merge .Xresources
-hsetroot -fill ~/Documents/RAEVONA___Docking_Towers_by_ANTIFAN_REAL.jpg
-xcompmgr -n &
-devmon &
-exec ck-launch-session xmonad
 
-killall -9 trayer
-killall -9 dzen2
-killall ibus-daemon
-killall dropboxd
-killall offlineimap
-killall devmon
-killall xcompmgr
+dotc_stop_all
+
+dotc_start_bkg $DOTPATH/dzen/clock.sh clock
+dotc_start_bkg $DOTPATH/dzen/volume.sh volume
+dotc_start_bkg $DOTPATH/dzen/battery.sh battery
+dotc_start_bkg $DOTPATH/dzen/mpc.sh mpc
+dotc_start_bkg $DOTPATH/dzen/trayer.sh trayer
+dotc_start_log devmon devmon
+dotc_start_log dropboxd dropbox
+dotc_start_log offlineimap offlineimap
+doct_start_log "xcompmgr -n" xcompmgr
+ibus-daemon -x &
+urxvtd &
+hsetroot -fill ~/Documents/RAEVONA___Docking_Towers_by_ANTIFAN_REAL.jpg
+
+
+exec xmonad
+
+dotc_stop_all

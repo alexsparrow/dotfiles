@@ -2,23 +2,25 @@
 # little dzen-thingy to control your volume
 # you need amixer (or aumix) and gdbar
 # (c) 2007 Tom Rauchenwald and Jochen Schweizer
+source ~/.dot.conf
+source $DOTPATH/dzen/config.sh
 
-BG='#303030'     # dzen backgrounad
-FG='grey70'     # dzen foreground
-W=80         # width of the dzen bar
+source $DOTPATH/shell/display_info.sh
+DISP_WIDTH=$(display_width)
+
+W=50         # width of the dzen bar
 GW=30         #  width of the volume gauge
 GFG='#a8a3f5' # color of the gauge
 GH=7          # height of the gauge
 GBG='#333'    # color of gauge background
-X=1100        # x position
+X=`expr $DISP_WIDTH - 200 - 50 - $W`        # x position
 Y=0         # y position
 H=17
 
 # Caption of the gauge
 # in this case it displays the volume icon shipped with dzen
 CAPTION="^i(/home/alex/.alexdot/img/volume.xbm) "
-# Font to use
-FN='-misc-fixed-*-*-*-*-10-*-*-*-*-*-*-*'
+
 # command to increase the volume
 CI="amixer -c0 sset PCM 5dB+ >/dev/null"
 #CI="aumix -v +5"
@@ -35,13 +37,13 @@ MAX=100
 CV="amixer -c0 get Master | awk '/^  Mono/ {print \$4 \" \" $MAX}' | tr -d '[]%'"
 ON="amixer -c0 get Master | awk '/^  Mono/ {print \$6 }' | tr -d '[]%'"
 #CV="aumix -q | line | cut -d \" \" -f 3"
-echo "Max $MAX"
+
 while true; do
     echo -n $CAPTION
     MUTE=`eval "$ON"`
     GFGmute=$GFG
     if [ $MUTE == "off" ] ;
-    then GFGmute="red"
+    then GFGmute="#ff4747"
     fi
     eval "$CV" | gdbar -h $GH -w $GW -fg $GFGmute -bg $GBG
     sleep 1;
