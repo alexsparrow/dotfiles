@@ -12,13 +12,27 @@ set sort = threads
 set sort_aux = reverse-last-date-received
 
 set editor = "emacsclient -t -a ''"
+#set editor = "emacsclient -c -a '' "
 #set editor = "nano"
 
 set sendmail = "/usr/bin/msmtp"
-set realname = "Alex Sparrow"
-set from = "alex.sparrow@cern.ch"
+
+# Personal info
+source .dotprivate/.mutt_private
+# This makes the alternate addresses work as I'd expect
+set reverse_name=yes
+set reverse_realname=no
 set use_from = "yes"
 set envelope_from = "yes"
+
+# Don't prompt when replying
+set   fast_reply
+# Add followup-to on mailing lists
+set   followup_to
+
+set recall=no # Don't ask about postponed when composing
+              # just use 'R' to recall postponed messages
+set include # Don't ask to include replies
 
 # Oops this is the space to leave at the edge of the terminal!
 set wrapmargin = 2
