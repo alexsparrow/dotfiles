@@ -131,6 +131,7 @@ main = do
     , logHook = myLogHook d
     , workspaces = ["1:mail", "2:chat", "3:web", "4:code", "5:term", "6:write", "7:read", "8:bs", "9:etc"]
     , keys = newKeys
+    , focusFollowsMouse = False
     , layoutHook = smartBorders (myLayout)
 --           , normalBorderColor = "#3f3c6d"
 --           , focusedBorderColor = "#4f66ff"

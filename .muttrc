@@ -13,6 +13,7 @@ set sort_aux = reverse-last-date-received
 
 set editor = "emacsclient -t -a ''"
 #set editor = "nano"
+set editor = "vim -c 'set wrap tw=76 fo=toqwal12 nonumber spell' +1"
 
 set sendmail = "/usr/bin/msmtp"
 set realname = "Alex Sparrow"
