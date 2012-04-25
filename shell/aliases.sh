@@ -1,7 +1,7 @@
 alias ipy=ipython
 alias physlib="source ~/Research/PhysicsLib/setup.sh"
 alias go="source ~/Apps/go/src/env.bash"
-alias ec="emacsclient --alternate-editor emacs -n"
+alias ec="emacsclient -nc"
 
 alias lx05="ssh as1604@lx05.hep.ph.ic.ac.uk"
 alias lx06="ssh as1604@lx06.hep.ph.ic.ac.uk"
@@ -16,3 +16,4 @@ alias .cms='ssh -t as1604@lxplus.cern.ch -L 1088:localhost:1088 "ssh -ND 1088 as
 alias -g B=';echo -en "\007"'
 alias newsb='urxvt -fn "xft:Consolas-13" -xrm "URxvt*inheritPixmap:false" -e newsbeuter'
 alias termop='urxvt -fn "xft:Consolas-11" -xrm "URxvt*inheritPixmap:false"'
+alias rtfn='elinks https://www.archlinux.org/feeds/news/'

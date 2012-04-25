@@ -8,12 +8,12 @@ source $DOTPATH/dzen/config.sh
 source $DOTPATH/shell/display_info.sh
 DISP_WIDTH=$(display_width)
 
-W=50         # width of the dzen bar
+W=$2         # width of the dzen bar
 GW=30         #  width of the volume gauge
 GFG='#a8a3f5' # color of the gauge
 GH=7          # height of the gauge
 GBG='#333'    # color of gauge background
-X=`expr $DISP_WIDTH - 200 - 50 - $W`        # x position
+X=$1        # x position
 Y=0         # y position
 H=17
 

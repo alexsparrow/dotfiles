@@ -14,12 +14,12 @@ source $DOTPATH/shell/display_info.sh
 DISP_WIDTH=$(display_width)
 DISP_HEIGHT=$(display_height)
 
-W=50     # width of the dzen bar
+W=$2     # width of the dzen bar
 GW=30      # width of the gauge
 GFG='#999'  # color of the gauge
 GH=7       # height of the gauge
 GBG='#333'  # color of gauge background
-X=`expr $DISP_WIDTH - 200 - $W` # x position
+X=$1
 Y=0    # y position
 H=17
 

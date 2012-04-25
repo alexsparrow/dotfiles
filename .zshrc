@@ -23,5 +23,6 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # sources
+source $DOTPATH/shell/functions.sh
 source $DOTPATH/shell/aliases.sh
 source $DOTPATH/shell/exports.sh

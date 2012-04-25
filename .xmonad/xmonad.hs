@@ -36,7 +36,8 @@ import XMonad.Prompt.RunOrRaise
 import XMonad.Layout.Spiral
 
 import XMonad.Actions.SpawnOn
-
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Actions.CycleWS
 
 myManageHook :: [ManageHook]
 myManageHook =
@@ -124,7 +125,7 @@ myLogHook h = dynamicLogWithPP $ defaultPP -- the h here...
 
 main = do
   d <- spawnDzen dzenBar
-  xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
+  xmonad $ withUrgencyHook NoUrgencyHook $ ewmh defaultConfig
     { manageHook = composeAll myManageHook <+> manageDocks
     , modMask = mod4Mask
     , terminal = "urxvtc"
@@ -161,5 +162,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) =
   , ((modm, xK_x), spawnHere "emacsclient -c -n -a '' ")
   , ((modm, xK_BackSpace), focusUrgent)
   , ((modm, xK_F9), spawn "mpc toggle")
+  , ((modm, xK_l), toggleWS )
+--  , ((modm, xK_c), spawnHere "emacsclient -c -n -a '' 'org-protocol:/capture:/x/foo'")
+  , ((modm, xK_c), spawnHere "emacsclient -c -n -a '' -e '(make-capture-frame-capture)'")
+  , ((modm, xK_z), spawnHere "emacsclient -c -n -a '' -e '(make-capture-frame)'")
   , ((modm, xK_F8), spawn "~/.alexdot/bin/touchpad.sh")
   ]

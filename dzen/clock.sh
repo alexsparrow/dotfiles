@@ -11,12 +11,12 @@ DISP_WIDTH=$(display_width)
 DISP_HEIGHT=$(display_height)
 
 DATE_FORMAT='^p(5)^fg(#909090)^fg(green)%a, ^fg(white)%d^fg()/%m/%Y ^fg(#FFFF00)%H:%M^fg()'
-W=200         # width of the dzen bar
+W=$2         # width of the dzen bar
 GW=50         #  width of the volume gauge
 GFG='#a8a3f5' # color of the gauge
 GH=7          # height of the gauge
 GBG='#333'    # color of gauge background
-X=`expr $DISP_WIDTH - 200` # x position
+X=$1          # x position
 Y=0           # y position
 H=17
 
