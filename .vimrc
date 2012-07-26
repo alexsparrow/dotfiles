@@ -14,8 +14,8 @@ highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
 call pathogen#infect() 
 set background=dark
 "colorscheme solarized
-"colorscheme sunburst
-colorscheme wombat
+colorscheme sunburst
+"colorscheme wombat
 "set background=dark
 
 "let g:solarized_termcolors=256

@@ -52,4 +52,5 @@ URxvt.pasteCommand: xclip -o -selection clipboard
 
 !#include $HOME/.alexdot/Xresources/bubblegum
 !#include "Xresources/solarized"
-#include "Xresources/summered"
+!#include "Xresources/summered"
+#include "Xresources/zenburn"
