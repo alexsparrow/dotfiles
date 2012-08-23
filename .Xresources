@@ -1,23 +1,25 @@
 emacs.font: Consolas-11
 emacs.FontBackend: xft
 
-Xft.autohint: 0
-Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintfull
-Xft.hinting: 1
-Xft.antialias: 1
-Xft.dpi: 96
-Xft.rgba: rgb
+!Xft.autohint: 0
+!Xft.lcdfilter:  lcddefault
+!Xft.hintstyle:  hintfull
+!Xft.hinting: 1
+!Xft.antialias: 1
+!Xft.dpi: 96
+!Xft.rgba: rgb
 
 URxvt.depth: 32
 URxvt.saveLines:32767
 URxvt.scrollBar: false
-URxvt*font: xft:Consolas:size=12
+URxvt*font: xft:Consolas:size=14
 URxvt.letterSpace:	 -1
 URxvt*termName:    rxvt
-URxvt*shading: 30
-URxvt*inheritPixmap: true
-URxvt*tintcolor:#000000
+
+!URxvt*shading: 30
+!URxvt*inheritPixmap: true
+!URxvt*tintcolor:#000000
+
 URxvt.urgentOnBell: true
 URxvt.termName: rxvt-256color
 !tabbed-new
@@ -52,5 +54,5 @@ URxvt.pasteCommand: xclip -o -selection clipboard
 
 !#include $HOME/.alexdot/Xresources/bubblegum
 !#include "Xresources/solarized"
-!#include "Xresources/summered"
-#include "Xresources/zenburn"
+!#include "Xresources/zenburn"
+#include "Xresources/summered"
