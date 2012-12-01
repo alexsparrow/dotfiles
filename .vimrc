@@ -21,9 +21,6 @@ set background=dark
 "colorscheme wombat
 colorscheme Tomorrow-Night-Eighties
 
-autocmd FileType markdown set foldmethod=syntax
-set foldlevelstart=99
-
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 
@@ -43,3 +40,18 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+
+" Pweave
+au BufRead,BufNewFile *.Pnw    set filetype=noweb
+
+let noweb_backend = "markdown"
+let noweb_language = "python"
+let noweb_fold_code = 1 
+
+"pandoc
+let g:pandoc_no_empty_implicits=1
+let g:pandoc_no_spans=1
+let g:pandoc_no_folding=1
+
+set hidden
+set mouse=a
