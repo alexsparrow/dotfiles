@@ -1,6 +1,3 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule "rxvt-tabbed-new"]
-	path = rxvt-tabbed-new
-	url = git@github.com:alexsparrow/rxvt-tabbed-new.git
