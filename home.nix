@@ -95,6 +95,6 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    extraConfig = import ./hyprland.nix ;
+    extraConfig = import ./hyprland.nix;
   };
 }
