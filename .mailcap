@@ -1,2 +1,0 @@
-application/*; ~/.alexdot/mutt_open.sh %s -
-image/*; ~/.alexdot/mutt_open.sh %s -
