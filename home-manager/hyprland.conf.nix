@@ -196,7 +196,6 @@
 
   exec-once=waybar
   exec-once=nm-applet
-  #exec-once=copyq
   exec-once=hyprpaper
 
   exec-once = wl-paste --type text --watch cliphist store #Stores only text data

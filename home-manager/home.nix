@@ -1,7 +1,13 @@
 { config, pkgs, nurpkgs, firefox-nightly, ... }:
 
 {
-  nixpkgs.overlays = [ nurpkgs.overlay ];
+   nixpkgs = {
+    overlays = [ nurpkgs.overlay ];
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -20,8 +26,13 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    jq
+    vscode
+
     hyprpaper
+    grim
+    slurp
+    wl-clipboard
+    cliphist
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -73,8 +84,8 @@
   #
   home.sessionVariables = {
     EDITOR = "vim";
+    NIXOS_OZONE_WL = "1";
   };
-
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -93,7 +104,4 @@
       ];
     };
   };
-
-
-
 }
