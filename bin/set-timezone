@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+if [ $# -eq 0 ]
+  then
+      TZ=$(curl -s https://ipapi.co/timezone)
+  else
+      TZ="$1"
+fi
+
+echo "$TZ"
+timedatectl set-timezone "$TZ"
