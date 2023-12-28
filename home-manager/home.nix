@@ -33,6 +33,7 @@
     slurp
     wl-clipboard
     cliphist
+    waybar
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -90,6 +91,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  xdg.configFile."alacritty/alacritty.yml".source = ./alacritty.yml;
+
   programs.firefox = {
     enable = true;
     package = firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
@@ -102,6 +105,15 @@
         ublock-origin
         multi-account-containers
       ];
+    };
+  };
+
+   programs.git = {
+    enable = true;
+    userName  = "Alex Sparrow";
+    userEmail = "alex@alexsparrow.dev";
+    aliases = {
+      ci = "commit";
     };
   };
 }
