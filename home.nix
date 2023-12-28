@@ -21,6 +21,7 @@
   # environment.
   home.packages = with pkgs; [
     jq
+    hyprpaper
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -73,6 +74,13 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  xdg.configFile."hypr/hyprpaper.conf".text = ''
+  preload = ~/.local/share/wallpaper/910709.jpg
+  wallpaper = eDP-1,~/.local/share/wallpaper/910709.jpg
+  '';
+
+  xdg.dataFile."wallpaper".source = ./wallpaper;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
