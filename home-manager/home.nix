@@ -41,7 +41,7 @@
   # plain files is through 'home.file'.
   home.file = {
     ".bin" = {
-      source = ./bin;
+      source = ../bin;
       recursive = true;
     };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -75,12 +75,6 @@
     EDITOR = "vim";
   };
 
-  xdg.configFile."hypr/hyprpaper.conf".text = ''
-  preload = ~/.local/share/wallpaper/910709.jpg
-  wallpaper = eDP-1,~/.local/share/wallpaper/910709.jpg
-  '';
-
-  xdg.dataFile."wallpaper".source = ./wallpaper;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -101,8 +95,5 @@
   };
 
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = import ./hyprland.nix;
-  };
+
 }

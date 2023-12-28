@@ -30,7 +30,10 @@
           firefox-nightly = firefox-nightly;
           nurpkgs = nurpkgs;
         };
-        modules = [ ./home.nix ];
+        modules = [
+          ./home-manager/home.nix
+          ./home-manager/hyprland.nix
+        ];
       };
     };
 }
