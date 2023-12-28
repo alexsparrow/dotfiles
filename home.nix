@@ -71,7 +71,7 @@
   #  /etc/profiles/per-user/alex/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
@@ -90,5 +90,11 @@
         multi-account-containers
       ];
     };
+  };
+
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    extraConfig = import ./hyprland.nix ;
   };
 }
