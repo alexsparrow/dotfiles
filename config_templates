@@ -1,4 +1,0 @@
-.skyped/skyped.conf.tmpl -> .skyped/skyped.conf
-.gitconfig.tmpl -> .gitconfig
-.msmtprc.tmpl -> .msmtprc
-.emacs.d/alex/my-secret.el.tmpl -> .emacs.d/alex/my-secret.el
