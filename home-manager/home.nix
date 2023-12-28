@@ -1,7 +1,7 @@
 { config, pkgs, nurpkgs, firefox-nightly, ... }:
 
 {
-   nixpkgs = {
+  nixpkgs = {
     overlays = [ nurpkgs.overlay ];
     config = {
       allowUnfree = true;
