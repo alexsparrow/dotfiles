@@ -4,7 +4,7 @@ My home directory is managed using [home-manager](https://github.com/nix-communi
 
 To setup:
 
-bash```
+```bash
 
 # Setup nix
 sudo pacman -S nix
