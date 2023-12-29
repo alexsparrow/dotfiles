@@ -1,8 +1,24 @@
-{ config, pkgs, nurpkgs, firefox-nightly, ... }:
-
+{ config, pkgs, nurpkgs, firefox-nightly, nixgl_, ... }:
+let
+  nixGLWrap = pkg: pkgs.runCommand "${pkg.name}-nixgl-wrapper" { } ''
+    mkdir $out
+    ln -s ${pkg}/* $out
+    rm $out/bin
+    mkdir $out/bin
+    for bin in ${pkg}/bin/*; do
+     wrapped_bin=$out/bin/$(basename $bin)
+     echo "exec ${pkgs.lib.getExe pkgs.nixgl.nixGLIntel} $bin \$@" > $wrapped_bin
+     chmod +x $wrapped_bin
+    done
+  '';
+in
 {
+
   nixpkgs = {
-    overlays = [ nurpkgs.overlay ];
+    overlays = [
+      nurpkgs.overlay
+      nixgl_.overlay
+    ];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
@@ -25,7 +41,11 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
+
+
   home.packages = with pkgs; [
+    nixgl.nixGLIntel
+
     vscode
 
     hyprpaper
@@ -34,6 +54,14 @@
     wl-clipboard
     cliphist
     waybar
+
+    (nixGLWrap alacritty)
+    (nixGLWrap hyprland)
+    xfce.thunar
+
+    texlive.combined.scheme-medium
+    hledger
+    hledger-web
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -85,7 +113,9 @@
   #
   home.sessionVariables = {
     EDITOR = "vim";
-    NIXOS_OZONE_WL = "1";
+    # NIXOS_OZONE_WL = "1";
+    # See: https://github.com/simonmichael/hledger/issues/1033
+    LOCALE_ARCHIVE = "/usr/lib/locale/locale-archive";
   };
 
   # Let Home Manager install and manage itself.
@@ -108,9 +138,9 @@
     };
   };
 
-   programs.git = {
+  programs.git = {
     enable = true;
-    userName  = "Alex Sparrow";
+    userName = "Alex Sparrow";
     userEmail = "alex@alexsparrow.dev";
     aliases = {
       ci = "commit";

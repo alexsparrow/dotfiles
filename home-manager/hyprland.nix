@@ -1,7 +1,9 @@
 {
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = import ./hyprland.conf.nix;
+  xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
+
+  xdg.configFile."waybar/" = {
+    source = ./waybar;
+    recursive = true;
   };
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''

@@ -14,21 +14,23 @@
     };
 
     nurpkgs.url = "github:nix-community/NUR";
+    nixgl.url = "github:guibou/nixGL";
   };
 
-  outputs = { nixpkgs, nurpkgs, home-manager, firefox-nightly, ... }:
+  outputs = { nixpkgs, nurpkgs, home-manager, firefox-nightly, nixgl, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      foo = builtins.trace nurpkgs;
     in
     {
+
       homeConfigurations.alex = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = {
           firefox-nightly = firefox-nightly;
           nurpkgs = nurpkgs;
+          nixgl_ = nixgl;
         };
         modules = [
           ./home-manager/home.nix
