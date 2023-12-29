@@ -25,8 +25,6 @@ in
     };
   };
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
   home.username = "alex";
   home.homeDirectory = "/home/alex";
 
@@ -39,14 +37,20 @@ in
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-
-
   home.packages = with pkgs; [
     nixgl.nixGLIntel
 
-    vscode
+    # NOTE: Using code-insiders due to https://github.com/microsoft/vscode/issues/184124
+    # vscode
+    ((vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
+      src = (builtins.fetchTarball {
+        url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
+        sha256 = "017630xgr64qjva73imb56fcqr858xfcsbdgq97akawlxf1ydm5a";
+      });
+      version = "latest";
+
+      buildInputs = oldAttrs.buildInputs ++ [ pkgs.krb5 ];
+    }))
 
     hyprpaper
     grim
@@ -113,7 +117,7 @@ in
   #
   home.sessionVariables = {
     EDITOR = "vim";
-    # NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = "1";
     # See: https://github.com/simonmichael/hledger/issues/1033
     LOCALE_ARCHIVE = "/usr/lib/locale/locale-archive";
   };
