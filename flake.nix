@@ -33,6 +33,7 @@
           nixgl_ = nixgl;
         };
         modules = [
+          ./home-manager/firefox.nix
           ./home-manager/home.nix
           ./home-manager/hyprland.nix
           ./home-manager/zsh.nix
