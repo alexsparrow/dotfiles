@@ -18,4 +18,7 @@ nix-shell '<home-manager>' -A install
 git clone git@github.com:alexsparrow/dotfiles.git
 cd dotfiles
 home-manager switch --flake .
+
+# To update flakes
+nix flake update
 ```
