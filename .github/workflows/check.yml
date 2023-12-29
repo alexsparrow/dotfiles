@@ -1,17 +1,8 @@
 ---
-name: Helm Check
-on:
-    push:
-        paths:
-            - k8s/**
-            - .github/**
-            - scrips/**
+name: Check
 jobs:
     check:
         runs-on: ubuntu-22.04
-        strategy:
-            matrix:
-                test: [dev, prod]
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
