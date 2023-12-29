@@ -1,42 +1,9 @@
+Xft.dpi: 192
+
+! These might also be useful depending on your monitor and personal preference:
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
-Xft.dpi: 160
 Xft.rgba: rgb
-
-URxvt.depth: 32
-URxvt.saveLines:32767
-URxvt.scrollBar: false
-URxvt*font: xft:Consolas:size=10
-!URxvt.letterSpace:	 -1
-URxvt*termName:    rxvt
-
-!URxvt*shading: 30
-!URxvt*inheritPixmap: true
-!URxvt*tintcolor:#000000
-
-URxvt.urgentOnBell: true
-URxvt.termName: rxvt-256color
-URxvt.perl-ext-common: default,clipboard
-URxvt.iso14755: False
-
-URxvt.urlLauncher: firefox
-URxvt.underlineURLs: true
-!URxvt.matcher.button  : 2
-!URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
-
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-
-URxvt.copyCommand:  xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
-
-#include "Xresources/zenburn"
-
-URxvt.inputMethod: ibus
-URxvt.preeditType: OverTheSpot
