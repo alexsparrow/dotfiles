@@ -4,6 +4,7 @@
     enable = true;
     shellAliases = {
       ll = "ls -l";
+      pacman-prune = "sudo pacman -Rsn $(pacman -Qdtq)";
     };
 
     plugins = [

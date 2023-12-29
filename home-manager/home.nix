@@ -70,6 +70,17 @@ in
     signal-desktop
     whatsapp-for-linux
     spotify
+    discord
+    evince
+    foliate
+    kooha
+
+    kubectl
+    helm
+    postgresql
+    nmap
+    gdb
+    calibre
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
