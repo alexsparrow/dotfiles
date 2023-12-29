@@ -1,4 +1,4 @@
-{ config, pkgs, nurpkgs, firefox-nightly, nixgl_, ... }:
+{ config, pkgs, nurpkgs, firefox-nightly, nixgl_, emacs-overlay, ... }:
 let
   nixGLWrap = pkg: pkgs.runCommand "${pkg.name}-nixgl-wrapper" { } ''
     mkdir $out
@@ -18,6 +18,7 @@ in
     overlays = [
       nurpkgs.overlay
       nixgl_.overlay
+      emacs-overlay.overlay
     ];
     config = {
       allowUnfree = true;
@@ -68,6 +69,7 @@ in
     hledger-web
     signal-desktop
     whatsapp-for-linux
+    spotify
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
