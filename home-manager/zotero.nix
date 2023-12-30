@@ -8,7 +8,6 @@
         gitRef = "6b996d4f9";
         version = "7.0.0-beta.54";
 
-
         libPath = prev.zotero.libPath + ":" + prev.lib.makeLibraryPath [
           prev.alsa-lib
           prev.xorg.libXtst

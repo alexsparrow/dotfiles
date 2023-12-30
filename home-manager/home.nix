@@ -59,6 +59,9 @@ in
     wl-clipboard
     cliphist
     waybar
+    rofi-wayland
+    acpilight
+    wmctrl
 
     (nixGLWrap alacritty)
     (nixGLWrap hyprland)
@@ -154,4 +157,9 @@ in
       ci = "commit";
     };
   };
+
+  services.dunst = {
+    enable = true;
+  };
+  xdg.configFile."dunst/dunstrc".source = ./dunstrc;
 }
