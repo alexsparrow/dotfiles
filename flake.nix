@@ -69,6 +69,7 @@
           ./home-manager/git.nix
           ./home-manager/home.nix
           ./home-manager/hyprland.nix
+          ./home-manager/session-vars.nix
           ./home-manager/vscode.nix
           ./home-manager/zotero.nix
           ./home-manager/zsh.nix
