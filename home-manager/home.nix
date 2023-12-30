@@ -62,6 +62,8 @@ in
     rofi-wayland
     acpilight
     wmctrl
+    xorg.xwininfo
+    bc
 
     (nixGLWrap alacritty)
     (nixGLWrap hyprland)
