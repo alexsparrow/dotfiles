@@ -1,16 +1,6 @@
 { config, pkgs, nurpkgs, firefox-nightly, nixgl_, emacs-overlay, ... }:
 let
-  nixGLWrap = pkg: pkgs.runCommand "${pkg.name}-nixgl-wrapper" { } ''
-    mkdir $out
-    ln -s ${pkg}/* $out
-    rm $out/bin
-    mkdir $out/bin
-    for bin in ${pkg}/bin/*; do
-     wrapped_bin=$out/bin/$(basename $bin)
-     echo "exec ${pkgs.lib.getExe pkgs.nixgl.nixGLIntel} $bin \$@" > $wrapped_bin
-     chmod +x $wrapped_bin
-    done
-  '';
+  nixGLWrap = (import ./nixgl.nix { pkgs = pkgs; }).nixGLWrap;
 in
 {
 
@@ -115,10 +105,6 @@ in
       source = ../bin;
       recursive = true;
     };
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
