@@ -80,6 +80,8 @@ in
     foliate
     kooha
     calibre
+    nomacs
+    gimp
 
     kubectl
     helm
