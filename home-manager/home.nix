@@ -74,13 +74,17 @@ in
     evince
     foliate
     kooha
+    calibre
 
     kubectl
     helm
     postgresql
     nmap
+    htop
     gdb
-    calibre
+
+    slack
+    zotero_beta
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
