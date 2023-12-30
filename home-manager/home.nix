@@ -85,6 +85,9 @@ in
     nmap
     htop
     gdb
+    docker-compose
+    ripgrep
+    terraform
 
     slack
     zotero_beta
