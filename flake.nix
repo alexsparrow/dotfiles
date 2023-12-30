@@ -63,7 +63,6 @@
           emacs-overlay = emacs-overlay;
         };
 
-
         modules = [
           ./home-manager/emacs.nix
           ./home-manager/firefox.nix

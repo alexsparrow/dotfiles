@@ -128,17 +128,9 @@ in
 
   xdg.configFile."alacritty/alacritty.yml".source = ./alacritty.yml;
 
-  programs.git = {
-    enable = true;
-    userName = "Alex Sparrow";
-    userEmail = "alex@alexsparrow.dev";
-    aliases = {
-      ci = "commit";
-    };
-  };
-
   services.dunst = {
     enable = true;
   };
+
   xdg.configFile."dunst/dunstrc".source = ./dunstrc;
 }
