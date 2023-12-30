@@ -69,6 +69,7 @@
           ./home-manager/firefox.nix
           ./home-manager/home.nix
           ./home-manager/hyprland.nix
+          ./home-manager/vscode.nix
           ./home-manager/zotero.nix
           ./home-manager/zsh.nix
         ];
