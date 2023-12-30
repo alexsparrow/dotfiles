@@ -105,10 +105,4 @@ in
   programs.home-manager.enable = true;
 
   xdg.configFile."alacritty/alacritty.yml".source = ./alacritty.yml;
-
-  services.dunst = {
-    enable = true;
-  };
-
-  xdg.configFile."dunst/dunstrc".source = ./dunstrc;
 }

@@ -64,6 +64,7 @@
         };
 
         modules = [
+          ./home-manager/dunst.nix
           ./home-manager/emacs.nix
           ./home-manager/firefox.nix
           ./home-manager/git.nix
