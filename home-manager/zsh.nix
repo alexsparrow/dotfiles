@@ -5,6 +5,8 @@
     shellAliases = {
       ll = "ls -l";
       pacman-prune = "sudo pacman -Rsn $(pacman -Qdtq)";
+      # https://bbs.archlinux.org/viewtopic.php?id=187359
+      pacman-non-dep = "comm -23 <(pacman -Qqt | sort) <(echo $ignorepkg | tr ' ' '\n' | cat <(pacman -Sqg $ignoregrp) - | sort -u)";
     };
 
     plugins = [
