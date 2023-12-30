@@ -88,6 +88,7 @@ in
     docker-compose
     ripgrep
     terraform
+    rustup
 
     slack
     zotero_beta
