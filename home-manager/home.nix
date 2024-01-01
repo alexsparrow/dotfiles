@@ -102,8 +102,8 @@ in
     # '';
   };
 
+  xdg.configFile."alacritty/alacritty.yml".source = ./alacritty.yml;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  xdg.configFile."alacritty/alacritty.yml".source = ./alacritty.yml;
 }
