@@ -14,7 +14,7 @@ sudo systemctl enable nix-daemon
 sudo groupmod -aU alex nix-users
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 mkdir -p ~/.config/nix
-echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf   
+echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 
 
 # Install home-manager

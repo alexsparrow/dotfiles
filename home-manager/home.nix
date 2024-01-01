@@ -72,6 +72,7 @@ in
     ripgrep
     terraform
     rustup
+    jetbrains.idea-community
 
     slack
     zotero_beta
