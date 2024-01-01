@@ -42,6 +42,7 @@ in
     wmctrl
     xorg.xwininfo
     bc
+    circumflex
 
     (nixGLWrap alacritty)
     (nixGLWrap hyprland)

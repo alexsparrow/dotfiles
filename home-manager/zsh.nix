@@ -7,6 +7,7 @@
       pacman-prune = "sudo pacman -Rsn $(pacman -Qdtq)";
       # https://bbs.archlinux.org/viewtopic.php?id=187359
       pacman-non-dep = "comm -23 <(pacman -Qqt | sort) <(echo $ignorepkg | tr ' ' '\n' | cat <(pacman -Sqg $ignoregrp) - | sort -u)";
+      ssl_info = "openssl s_client -connect $1:443 </dev/null 2>/dev/null | openssl x509 -inform pem -text";
     };
 
     plugins = [
