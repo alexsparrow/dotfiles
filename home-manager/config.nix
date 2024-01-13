@@ -1,6 +1,6 @@
- { nurpkgs, nixgl_, emacs-overlay, ... }:
- {
- nixpkgs = {
+{ nurpkgs, nixgl_, emacs-overlay, ... }:
+{
+  nixpkgs = {
     overlays = [
       nurpkgs.overlay
       nixgl_.overlay
@@ -11,4 +11,4 @@
       allowUnfreePredicate = (_: true);
     };
   };
- }
+}

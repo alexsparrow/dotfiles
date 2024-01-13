@@ -14,7 +14,7 @@
     };
 
     nurpkgs.url = "github:nix-community/NUR";
-    nixgl.url = "github:guibou/nixGL";
+    nixgl.url = "github:alexsparrow/nixGL";
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -52,7 +52,7 @@
     in
     {
 
-      homeConfigurations.alex = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.alex-fw = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         extraSpecialArgs = {
@@ -65,6 +65,32 @@
 
         modules = [
           ./home-manager/config.nix
+          ./home-manager/dunst.nix
+          ./home-manager/emacs.nix
+          ./home-manager/firefox.nix
+          ./home-manager/git.nix
+          ./home-manager/home.nix
+          ./home-manager/hyprland.nix
+          ./home-manager/session-vars.nix
+          ./home-manager/vscode.nix
+          ./home-manager/zotero.nix
+          ./home-manager/zsh.nix
+        ];
+      };
+
+      homeConfigurations.alex-nuc = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        extraSpecialArgs = {
+          inherit firefox-nightly;
+          inherit nurpkgs;
+          inherit emacs-overlay;
+          nixgl_ = nixgl;
+          # nix-doom-emacs = nix-doom-emacs;
+          nvidia = true;
+        };
+
+        modules = [
           ./home-manager/dunst.nix
           ./home-manager/emacs.nix
           ./home-manager/firefox.nix

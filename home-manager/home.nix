@@ -1,6 +1,7 @@
-{ config, pkgs, nurpkgs, firefox-nightly, nixgl_, emacs-overlay, ... }:
+{ config, pkgs, nurpkgs, firefox-nightly, nixgl_, emacs-overlay, nvidia, ... }:
 let
-  nixGLWrap = (import ./nixgl.nix { pkgs = pkgs; }).nixGLWrap;
+  nixGLWrap = (import ./nixgl.nix { pkgs = pkgs; nvidia = nvidia; }).nixGLWrap;
+  goread = (import ../goread/package.nix { lib = pkgs.lib; buildGoModule = pkgs.buildGoModule; fetchFromGitHub = pkgs.fetchFromGitHub; });
 in
 {
 
@@ -29,7 +30,7 @@ in
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    nixgl.nixGLIntel
+    (if nvidia then nixgl.auto.nixGLNvidia else nixgl.nixGLIntel)
 
     hyprpaper
     grim
@@ -43,6 +44,7 @@ in
     xorg.xwininfo
     bc
     circumflex
+    goread
 
     (nixGLWrap alacritty)
     (nixGLWrap hyprland)
@@ -61,6 +63,7 @@ in
     calibre
     nomacs
     gimp
+    nom
 
     kubectl
     helm
@@ -73,6 +76,7 @@ in
     terraform
     rustup
     jetbrains.idea-community
+    nodejs
 
     slack
     zotero_beta
@@ -81,7 +85,7 @@ in
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "DroidSansMono" ]; })
 
     (pkgs.writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"
