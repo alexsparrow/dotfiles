@@ -49,59 +49,43 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      commonModules = [
+        ./home-manager/config.nix
+        ./home-manager/dunst.nix
+        ./home-manager/emacs.nix
+        ./home-manager/firefox.nix
+        ./home-manager/git.nix
+        ./home-manager/home.nix
+        ./home-manager/hyprland.nix
+        ./home-manager/session-vars.nix
+        ./home-manager/vscode.nix
+        ./home-manager/zotero.nix
+        ./home-manager/zsh.nix
+      ];
+      commonArgs = {
+        firefox-nightly = firefox-nightly;
+        nurpkgs = nurpkgs;
+        nixgl_ = nixgl;
+        # nix-doom-emacs = nix-doom-emacs;
+        emacs-overlay = emacs-overlay;
+        nvidia = false;
+      };
     in
     {
 
       homeConfigurations.alex-fw = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        extraSpecialArgs = {
-          firefox-nightly = firefox-nightly;
-          nurpkgs = nurpkgs;
-          nixgl_ = nixgl;
-          # nix-doom-emacs = nix-doom-emacs;
-          emacs-overlay = emacs-overlay;
-        };
-
-        modules = [
-          ./home-manager/config.nix
-          ./home-manager/dunst.nix
-          ./home-manager/emacs.nix
-          ./home-manager/firefox.nix
-          ./home-manager/git.nix
-          ./home-manager/home.nix
-          ./home-manager/hyprland.nix
-          ./home-manager/session-vars.nix
-          ./home-manager/vscode.nix
-          ./home-manager/zotero.nix
-          ./home-manager/zsh.nix
-        ];
+        extraSpecialArgs = commonArgs;
+        modules = commonModules;
       };
 
       homeConfigurations.alex-nuc = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        extraSpecialArgs = {
-          inherit firefox-nightly;
-          inherit nurpkgs;
-          inherit emacs-overlay;
-          nixgl_ = nixgl;
-          # nix-doom-emacs = nix-doom-emacs;
-          nvidia = true;
-        };
+        extraSpecialArgs = commonArgs // { nvidia = true; };
 
-        modules = [
-          ./home-manager/dunst.nix
-          ./home-manager/emacs.nix
-          ./home-manager/firefox.nix
-          ./home-manager/git.nix
-          ./home-manager/home.nix
-          ./home-manager/hyprland.nix
-          ./home-manager/session-vars.nix
-          ./home-manager/vscode.nix
-          ./home-manager/zotero.nix
-          ./home-manager/zsh.nix
-        ];
+        modules = commonModules;
       };
     };
 }

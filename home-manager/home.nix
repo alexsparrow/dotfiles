@@ -1,22 +1,10 @@
 { config, pkgs, nurpkgs, firefox-nightly, nixgl_, emacs-overlay, nvidia, ... }:
 let
   nixGLWrap = (import ./nixgl.nix { pkgs = pkgs; nvidia = nvidia; }).nixGLWrap;
-  goread = (import ../goread/package.nix { lib = pkgs.lib; buildGoModule = pkgs.buildGoModule; fetchFromGitHub = pkgs.fetchFromGitHub; });
+  goread = (import ../packages/goread.nix { lib = pkgs.lib; buildGoModule = pkgs.buildGoModule; fetchFromGitHub = pkgs.fetchFromGitHub; });
+  semtex = (import ../packages/semtex.nix { lib = pkgs.lib; fetchurl = pkgs.fetchurl; appimageTools = pkgs.appimageTools; });
 in
 {
-
-  nixpkgs = {
-    overlays = [
-      nurpkgs.overlay
-      nixgl_.overlay
-      emacs-overlay.overlay
-    ];
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
-  };
-
   home.username = "alex";
   home.homeDirectory = "/home/alex";
 
@@ -64,6 +52,11 @@ in
     nomacs
     gimp
     nom
+    zip
+    strace
+    wine
+
+    semtex
 
     kubectl
     helm
@@ -77,6 +70,8 @@ in
     rustup
     jetbrains.idea-community
     nodejs
+    upower
+    toot
 
     slack
     zotero_beta
@@ -107,7 +102,7 @@ in
     # '';
   };
 
-  xdg.configFile."alacritty/alacritty.yml".source = ./alacritty.yml;
+  xdg.configFile."alacritty/alacritty.toml".source = ./alacritty.toml;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
