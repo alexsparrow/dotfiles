@@ -55,6 +55,10 @@ in
     zip
     strace
     wine
+    masterpdfeditor
+    ferdium
+    go
+    obsidian
 
     semtex
 
