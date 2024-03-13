@@ -38,12 +38,12 @@ in
     (nixGLWrap hyprland)
     xfce.thunar
 
-    texlive.combined.scheme-medium
+    texlive.combined.scheme-full
     hledger
     hledger-web
     signal-desktop
     whatsapp-for-linux
-    spotify
+    (nixGLWrap spotify)
     discord
     evince
     foliate
@@ -55,10 +55,10 @@ in
     zip
     strace
     wine
-    masterpdfeditor
     ferdium
     go
     obsidian
+    xournalpp
 
     semtex
 
