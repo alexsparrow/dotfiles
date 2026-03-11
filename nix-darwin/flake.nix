@@ -24,6 +24,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
       mac-app-util.url = "github:hraban/mac-app-util";
+
+    android-nixpkgs = {
+      # url = "github:tadfisher/android-nixpkgs";
+
+      # The main branch follows the "canary" channel of the Android SDK
+      # repository. Use another android-nixpkgs branch to explicitly
+      # track an SDK release channel.
+      #
+      url = "github:tadfisher/android-nixpkgs/stable";
+      # url = "github:tadfisher/android-nixpkgs/beta";
+      # url = "github:tadfisher/android-nixpkgs/preview";
+      # url = "github:tadfisher/android-nixpkgs/canary";
+
+      # If you have nixpkgs as an input, this will replace the "nixpkgs" input
+      # for the "android" flake.
+      #
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -37,6 +55,7 @@
       homebrew-cask,
       home-manager,
       mac-app-util,
+      android-nixpkgs,
     }:
     let
       configuration =
@@ -47,8 +66,10 @@
           environment.systemPackages = [
             pkgs.vim
             pkgs.tmux
-            pkgs.jdk24
+            pkgs.jdk25
             pkgs.jdk17
+
+            pkgs.devenv
           ];
 
           users = {
@@ -59,16 +80,18 @@
           };
 
           system.activationScripts.extraActivation.text = ''
-            ln -sf "${pkgs.jdk24}" "/Library/Java/JavaVirtualMachines/24.jdk"
+            ln -sf "${pkgs.jdk25}" "/Library/Java/JavaVirtualMachines/25.jdk"
             ln -sf "${pkgs.jdk17}" "/Library/Java/JavaVirtualMachines/17.jdk"
           '';
 
           launchd.user.envVariables = {
             JAVA_HOME = "/Library/Java/JavaVirtualMachines/17.jdk";
+            EDITOR = "vim";
           };
 
           programs.zsh.variables = {
             JAVA_HOME = "/Library/Java/JavaVirtualMachines/17.jdk";
+            EDITOR = "vim";
           };
 
           # Necessary for using flakes on this system.
@@ -98,11 +121,15 @@
           homebrew = {
             enable = true;
             brews = [];
-            casks = [];
+            casks = [ "ghostty" "android-studio" ];
           };
 
-          # Enable alternative shell support in nix-darwin.
-          # programs.fish.enable = true;
+          fonts.packages = with pkgs; [
+            nerd-fonts.fira-code
+            nerd-fonts.jetbrains-mono
+            # Needed for doom emacs in particular
+            nerd-fonts.symbols-only
+          ];
 
           # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -115,23 +142,31 @@
           nixpkgs.hostPlatform = "aarch64-darwin";
 
           nixpkgs.config.allowUnfree = true;
+
+          # needed for cachix with devenv
+          nix.settings.trusted-users = [ "root" "alex" ];
         };
     in
     {
       # Build darwin flake using:
       darwinConfigurations."Alexs-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs; }; # This passes inputs to system modules
         modules = [
           nix-homebrew.darwinModules.nix-homebrew
           configuration
           mac-app-util.darwinModules.default
           home-manager.darwinModules.home-manager
           {
+            nixpkgs.overlays = [
+          android-nixpkgs.overlays.default
+        ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             # To enable it for all users:
             home-manager.sharedModules = [
               mac-app-util.homeManagerModules.default
             ];
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.alex = import ./home.nix;
           }
         ];
