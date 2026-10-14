@@ -2,7 +2,7 @@
 
 # Install
 - Install `nix` (didn't use determinate systems)
-- Run 
+- Run
 ```
 sudo nix run nix-darwin/master#darwin-rebuild -- switch
 ```
