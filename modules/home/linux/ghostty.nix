@@ -7,16 +7,14 @@
     enableZshIntegration = true;
 
     settings = {
-      # Nord, darkened. An explicit `background` overrides the theme's own
-      # (#2e3440) regardless of key order. Darker still: #1e222a, #16181d.
       theme = "Nord";
-      background = "#242933";
 
-      # Opaque: the wallpaper is a blue-grey cityscape, and blending it in
-      # washed the terminal out to a flat mid blue. 0.9 if you want a hint.
+      # A little wallpaper through the background. Depends on the ghostty
+      # window rule in ./niri/config.kdl - without it, what shows through is
+      # niri's focus ring colour rather than the wallpaper.
       background-opacity = 0.9;
-      # Default 0.7, which would otherwise make an unfocused window more
-      # see-through than a focused one.
+      # Default 0.7, which compounds with background-opacity and makes an
+      # unfocused window more see-through than a focused one.
       unfocused-split-opacity = 1.0;
     };
   };
