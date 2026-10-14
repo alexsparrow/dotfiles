@@ -181,8 +181,8 @@ layout {
 
     // You can enable drop shadows for windows.
     shadow {
-        // Uncomment the next line to enable shadows.
-        // on
+        // Enabled to replace the CSD shadow that clip-to-geometry removes.
+        on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -274,6 +274,14 @@ animations {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
 
+// Niri paints the focus ring as a solid rectangle *behind* windows, so its
+// active-color shows through semitransparent ones. Ghostty is transparent,
+// so let the wallpaper through instead of the ring colour.
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+    draw-border-with-background false
+}
+
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -305,9 +313,9 @@ window-rule {
     // block-out-from "screencast"
 }
 
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+// Rounded corners for all windows, so niri's focus ring and shadow follow the
+// curve instead of being drawn square behind the window.
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
