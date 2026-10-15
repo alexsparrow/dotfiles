@@ -3,12 +3,5 @@
 {
   imports = [ ../modules/home/linux ];
 
-  my.niri.outputs = ''
-    output "HDMI-A-1" {
-        mode "3840x2160@30.000"
-        scale 1.5
-    }
-  '';
-
   home.stateVersion = "23.11";
 }
