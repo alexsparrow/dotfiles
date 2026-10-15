@@ -3,7 +3,6 @@
     # ./dunst.nix - noctalia handles notifications; kept in case that changes.
     ./alacritty.nix
     ./firefox.nix
-    ./ghostty.nix
     ./niri.nix
     ./packages.nix
     ./wallpaper.nix

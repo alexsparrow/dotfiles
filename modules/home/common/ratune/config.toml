@@ -1,0 +1,197 @@
+[server]
+url = "https://music.nestnet.work"
+username = "alex"
+password = ""
+
+[player]
+default_volume = 70
+max_bit_rate = 0   # 0 = unlimited; set e.g. 320 to cap streaming bitrate
+# mpris = true     # Linux MPRIS / macOS Now Playing for media keys (default: true)
+# queue_loop = true   # wrap to first track after the last queue item (default: true)
+# daemon = true       # Unix: keep playing after the TUI closes (`q` detaches, Ctrl+q / `ratune stop` quits)
+
+[ratings]
+# enabled = false     # show ratings in UI, enable Shift+1…5 keybinds, export MPRIS UserRating
+# Glyphs moved to [theme.icon] (rating_filled / rating_empty / …).
+# Legacy still works: star_filled, star_empty, bracket_open, bracket_close.
+
+[keybinds]
+# Shift+letter: use "Shift+n" or "N" (same). Helps Ghostty/kitty vs. classic terminals.
+# scroll_up     = "k"
+# scroll_down   = "j"
+# column_left   = "h"
+# column_right  = "l"
+# play_pause    = "p"
+# next_track    = "n"
+# prev_track    = "Shift+n"
+# seek_forward  = "Right"
+# seek_backward = "Left"
+# add_track     = "a"
+# add_all       = "Shift+a"
+# add_all_replace_album  = "Ctrl+r"
+# add_all_replace_artist = "Ctrl+Shift+r"
+# add_all_prepend  = "Ctrl+Shift+p"
+# shuffle       = "x"         # Now Playing: shuffle queue; Home/Browse: toggle shuffle mode
+# unshuffle     = "z"
+# toggle_shuffle_mode = "Ctrl+x"  # sticky mode: bulk adds land shuffled
+# toggle_queue_loop = "Q"
+# toggle_radio      = "R"
+# np_focus_queue = "Ctrl+g"
+# clear_queue   = "Shift+d"
+# remove_from_queue = "d"
+# search        = "/"
+# volume_up     = "+"
+# volume_down   = "-"
+# tab_switch    = "Tab"
+# tab_switch_reverse = "`"
+# go_to_home    = "1"
+# go_to_browser = "2"
+# go_to_nowplaying = "3"
+# quit          = "q"
+# quit_stop     = "Ctrl+q"    # quit TUI and stop daemon; "" disables
+# library_fzf     = "Ctrl+f"
+# library_refresh = "Ctrl+g"
+# library_index_append_queue = "Ctrl+a"   # append full index to queue (y/n); "" to disable
+# toggle_help = "i"
+# toggle_dynamic_theme = "t"
+# toggle_lyrics = "Shift+l"
+# toggle_visualizer = "Shift+v"
+# playlist_overlay = "Shift+p"
+# browser_add_to_playlist = ">"
+# remove_from_playlist = "<"
+# home_section_next = "Shift+j"
+# home_section_prev = "Shift+k"
+# home_refresh = "r"
+
+# toggle_favorite = "f"
+# rate_song_1 = "Shift+1"   # rate focused/playing song 1–5 (Subsonic setRating)
+# rate_song_2 = "Shift+2"
+# rate_song_3 = "Shift+3"
+# rate_song_4 = "Shift+4"
+# rate_song_5 = "Shift+5"
+# rate_song_clear = "Shift+0"
+
+[theme]
+# accent        = "#ff8c00"   # highlighted items, active borders, progress fill
+# background    = "#1a1a1a"   # popups, list fallbacks; legacy default for tab/status bars
+# tab_bar       = "#1a1a1a"   # Home | Browse | Now Playing strip (falls back to background)
+# status_bar    = "#1a1a1a"   # bottom status line (falls back to background)
+# surface       = "#161616"   # panel backgrounds (browser columns, queue)
+# surface       = "unset"     # omit painted panel bg (transparent terminals)
+# foreground    = "#d4d0c8"   # primary text
+# dimmed        = "#5a5858"   # muted / secondary text
+# border        = "#252525"   # inactive pane borders
+# border_active = "#3a3a3a"   # active pane borders
+# preset = "dynamic"          # static | dynamic (default) | terminal | os
+# Glyphs: [theme.icon] — see docs/sample-config.toml (transport, favorite, rating_*)
+# Outlines: [theme.border_lines] type = "ascii" | plain | rounded | …
+#   optional [theme.border_lines.shuffle_mode] type = "double" (etc.) while shuffle mode is on
+
+
+[ui]
+# album_art_backend = "kitty-apc"   # default: ratatui-image
+
+[ui.general]
+tab_bar_position = "bottom"
+
+[ui.row_now_playing]
+bar_height = 4
+layout = "row"
+box_location = "right"
+show_controls = true
+show_progress = true
+box_include_controls = false
+box_include_progress = false
+progress_style = "██░"
+# ncmpcpp-style lines for the bottom strip (Home / Browse / NP row). Not used for the queue list.
+# lines = ["$b%t$/b", "%a", "%b"]
+
+[ui.hometab.recent_albums]
+show_art = true
+# cover_fetch_max_px = 320   # getCoverArt size (0 = full image; lower = faster)
+
+[ui.hometab.layout]
+top_height_percent = 50
+# Pick any three of: recent_albums, recent_tracks, rediscover, recently_added, recently_released
+panels = ["recent_albums", "recent_tracks", "rediscover"]
+
+[ui.browsetab]
+mode = "artists"
+
+[ui.nptab]
+# show_fzf_hint = false
+# You can also set queue_template here; `[ui.nptab.queue]` wins if both are set.
+
+[ui.nptab.art]
+show = true
+position = "left"
+
+[ui.nptab.layout]
+# left_width_percent = 50
+
+[ui.nptab.queue]
+position = "right"
+# One template per queue ROW — `{title}`, `{n}`, `{artist}`, `{album}`, `{duration}`, `{suffix}`.
+# NOT the same syntax as now-playing `lines` above (those use % / $ tags).
+# queue_template = "{n}{title:<40}  {artist:<25}  {duration:>5}"
+
+[ui.nptab.lyrics_pane]
+enabled = true
+visible = false
+location = "right"
+
+[ui.nptab.visualizer_pane]
+enabled = true
+visible = false
+location = "right"
+
+[ui.nptab.now_playing]
+# Overrides `row_now_playing` for the Now Playing tab (strip + boxed pane text).
+# layout = "boxed"
+# lines = ["$b%t$/b", "%a", "%b"]
+
+[library]
+# enabled = true
+# index_path = ""          # empty = ~/.cache/ratune/library_index.json
+# max_age_secs = 86400     # refresh in background when older (0 = always stale)
+# [library.fzf]            # fuzzy picker (legacy: fzf_binary / fzf_args under [library])
+# binary = "fzf"           # or "sk" (skim gets --bind=ctrl-r:accept(ctrl-r) for replace-queue)
+# args = ["--delimiter=\\t", "--with-nth=2,3,4,5", "--nth=1,2,3", "--multi", "--expect=ctrl-r", "--border=rounded"]
+# aligned --header follows --with-nth unless you pass your own --header=…
+# [library.fzf.columns]    # max TSV field width (terminal columns); 0 = no truncation
+# artist = 26
+# album = 28
+# title = 36               # set to 0 to search long track names
+# duration = 6
+# fetch_album_parallelism = 12    # concurrent getAlbum per artist during index refresh
+# fetch_artist_parallelism = 4    # concurrent artists during index refresh
+# navidrome_skip_unchanged_scan = false   # Navidrome: skip full walk when lastScan unchanged
+# notify_on_forced_index_refresh = true   # desktop notification when forced refresh finishes
+
+[cache]
+enabled     = true
+max_size_gb = 2   # maximum total cache size in gigabytes
+
+[lyrics]
+# source — one provider or an ordered fallback list. Default: "lrclib"
+#   Example: source = ["lrclib", "subsonic", "netease"]
+#   The first provider returning lyrics wins; empty/error/timeout tries the next.
+source = "lrclib"
+# lrclib_url — LRCLib base URL when source = "lrclib". Default: https://lrclib.net
+# lrclib_url = "https://lrclib.net"
+# cache_enabled — store lyrics under ~/.cache/ratune/lyrics/ for offline use. Default: true
+# cache_enabled = true
+
+# [scrobble]
+# enabled = false
+# service = "lastfm"          # or "librefm"
+# api_key = ""
+# api_secret = ""            # plaintext supported; or api_secret_command / keyring
+# session_key = ""           # from `ratune scrobble-auth`; or session_key_command / keyring
+# api_secret_command = ""
+# session_key_command = ""
+# scrobble_to_server = true   # Subsonic now-playing and /scrobble for Navidrome
+#
+# CLI helpers (see README § Scrobbling):
+#   ratune scrobble-api-secret [--save-keyring]
+#   ratune scrobble-auth [--save-keyring]

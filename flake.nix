@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ratune = {
+      url = "github:acmagn/ratune";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Linux
     nur = {
       url = "github:nix-community/NUR";
