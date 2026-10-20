@@ -27,6 +27,7 @@
     hledger-web
     nom
     toot
+    wgnord # NordVPN over WireGuard; run with sudo
 
     # GUI apps
     calibre
@@ -35,6 +36,7 @@
     ferdium
     foliate
     gimp
+    google-chrome
     karere # WhatsApp client (replaces the removed whatsapp-for-linux)
     kooha
     nomacs
@@ -43,6 +45,7 @@
     spotify
     thunar
     xournalpp
+    zed-editor
     zotero # pinned to the release channel in ../../../overlays
 
     texliveFull
