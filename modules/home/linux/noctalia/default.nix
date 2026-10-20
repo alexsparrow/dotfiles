@@ -39,6 +39,7 @@ in
     xdg.configFile = {
       "noctalia/theme.toml".source = ./theme.toml;
       "noctalia/idle.toml".source = ./idle.toml;
+      "noctalia/bar.toml".source = ./bar.toml;
       "noctalia/wallpaper.toml".text =
         builtins.replaceStrings
           [ "@wallpapers@" "per_monitor_directories = false" ]

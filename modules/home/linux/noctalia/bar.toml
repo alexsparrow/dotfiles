@@ -1,0 +1,4 @@
+# The built-in bar clock is time-only ({:%H:%M}); show the date too.
+[widget.clock]
+type = "clock"
+format = "{:%a %d %b  %H:%M %Z}"
