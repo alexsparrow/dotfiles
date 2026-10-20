@@ -74,7 +74,8 @@ nix fmt -- $(git ls-files '*.nix')   # or just let pre-commit do it
   host to get them back.
 - `/etc/nixos` deliberately keeps only what has to be system-wide:
   `programs.niri`, greetd, drivers, and `vim`/`wget` so a broken home-manager
-  generation is still repairable. User-facing apps (ghostty, noctalia-shell,
+  generation is still repairable. User-facing apps (ghostty, noctalia,
   firefox, claude-code) are installed from here.
-- noctalia's own settings (`~/.config/noctalia/*.json`) are written by the shell
-  at runtime, so they're left unmanaged.
+- noctalia (v5) is configured from `modules/home/linux/noctalia/*.toml`. The
+  Settings UI writes `~/.local/state/noctalia/settings.toml`, which overrides
+  them, so change those keys in the repo rather than the UI.

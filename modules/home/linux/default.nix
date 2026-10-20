@@ -4,6 +4,7 @@
     ./alacritty.nix
     ./firefox.nix
     ./niri.nix
+    ./noctalia
     ./packages.nix
     ./wallpaper.nix
   ];

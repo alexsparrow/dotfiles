@@ -1,0 +1,13 @@
+# ../wallpaper.nix populates this folder from the repo; default.nix fills in
+# its absolute path, and turns per_monitor_directories on (adding a section
+# per monitor) when my.noctalia.wallpaperMonitors is set.
+[wallpaper]
+enabled = true
+directory = "@wallpapers@"
+per_monitor_directories = false
+fill_mode = "crop"
+
+[wallpaper.automation]
+enabled = true
+order = "random"
+interval_seconds = 1800

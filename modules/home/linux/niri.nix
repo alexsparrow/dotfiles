@@ -22,7 +22,6 @@
 
     home.packages = with pkgs; [
       fuzzel # Mod+D launcher
-      noctalia-shell # bar/shell, spawn-at-startup
       swaylock # Super+Alt+L
       xwayland-satellite # X11 apps under niri
     ];

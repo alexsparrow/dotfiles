@@ -1,0 +1,13 @@
+# Lock at 5 min, screens off at 10 min. Once already locked (e.g. Mod+Ctrl+Q),
+# screens go off after 1 min instead.
+[idle]
+pre_action_fade_seconds = 5.0
+
+[idle.behavior.lock]
+enabled = true
+timeout = 300.0
+
+[idle.behavior.screen-off]
+enabled = true
+timeout = 600.0
+locked_timeout = 60.0
