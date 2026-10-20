@@ -25,6 +25,7 @@
 
   # Tools I want on every machine, whatever the platform.
   home.packages = with pkgs; [
+    bitwarden-desktop
     claude-code
     devenv # per-project toolchains; keeps this list to the machine-wide stuff
     docker-compose
