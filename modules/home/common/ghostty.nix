@@ -15,6 +15,9 @@
       # Default 0.7, which compounds with background-opacity and makes an
       # unfocused window more see-through than a focused one.
       unfocused-split-opacity = 1.0;
+      # Default is 10MB per surface. Long Claude Code sessions fill it, and
+      # every resize (e.g. niri's Mod+F maximize-column) reflows all of it.
+      scrollback-limit = 2000000;
     };
   };
 }
