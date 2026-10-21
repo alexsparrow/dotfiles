@@ -7,6 +7,7 @@
     ./git.nix
     ./ghostty.nix
     ./vscode.nix
+    ./zellij.nix
     ./zsh.nix
   ];
 
