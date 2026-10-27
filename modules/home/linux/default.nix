@@ -6,6 +6,7 @@
     ./niri.nix
     ./noctalia
     ./packages.nix
+    ./vscode.nix
     ./wallpaper.nix
   ];
 

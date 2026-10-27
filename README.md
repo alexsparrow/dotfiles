@@ -17,8 +17,8 @@ hosts/                  per-machine configuration
   nuc.nix                 desktop, NVIDIA         (homeConfigurations.alex-nuc)
   macbook-pro.nix         MacBook Pro             (darwinConfigurations."Alexs-MacBook-Pro")
 modules/
-  home/common/          home-manager, both platforms (zsh, git, emacs, vscode)
-  home/linux/           niri, firefox, dunst, alacritty, desktop packages
+  home/common/          home-manager, both platforms (zsh, git, emacs, zed)
+  home/linux/           niri, firefox, dunst, alacritty, vscode, desktop packages
   home/darwin/          mac-only home-manager bits
   darwin/               nix-darwin system config (homebrew, java)
 overlays/               nixpkgs overlays (NUR, emacs-overlay)

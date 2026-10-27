@@ -45,7 +45,6 @@
     spotify
     thunar
     xournalpp
-    zed-editor
     zotero # pinned to the release channel in ../../../overlays
 
     texliveFull

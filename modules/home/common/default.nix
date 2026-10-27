@@ -6,7 +6,6 @@
     ./emacs.nix
     ./git.nix
     ./ghostty.nix
-    ./vscode.nix
     ./zellij.nix
     ./zsh.nix
   ];
@@ -38,6 +37,7 @@
     nmap
     postgresql
     ripgrep
+    zed-editor
     zip
   ];
 
