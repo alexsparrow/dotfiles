@@ -2,6 +2,8 @@
 {
   imports = [ ../modules/home/linux ];
 
+  my.wallpapers.repo = "git@github.com:alexsparrow/wallpapers.git";
+
   # No output blocks yet - niri auto-detects. Fill in from `niri msg outputs`
   # once this machine is actually running the config.
   # my.niri.outputs = ''

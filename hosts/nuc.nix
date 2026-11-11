@@ -3,6 +3,8 @@
 {
   imports = [ ../modules/home/linux ];
 
+  my.wallpapers.repo = "git@github.com:alexsparrow/wallpapers.git";
+
   # Left, right - a different random wallpaper on each.
   my.noctalia.wallpaperMonitors = [
     "DP-5"

@@ -19,14 +19,11 @@
     recursive = true;
   };
 
-  # hyprpaper reads absolute paths, hence its own copy of the wallpapers;
-  # ./wallpaper.nix puts the same set where noctalia looks.
-  xdg.dataFile."wallpaper".source = ../../../wallpaper;
-
+  # These names come from the my.wallpapers.repo clone (./wallpaper.nix).
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/.local/share/wallpaper/910709.jpg
-    preload = ~/.local/share/wallpaper/992551.jpg
-    wallpaper = eDP-1,~/.local/share/wallpaper/910709.jpg
-    wallpaper = DP-5,~/.local/share/wallpaper/992551.jpg
+    preload = ~/Pictures/Wallpapers/910709.jpg
+    preload = ~/Pictures/Wallpapers/992551.jpg
+    wallpaper = eDP-1,~/Pictures/Wallpapers/910709.jpg
+    wallpaper = DP-5,~/Pictures/Wallpapers/992551.jpg
   '';
 }

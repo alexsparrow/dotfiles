@@ -23,7 +23,6 @@ modules/
   darwin/               nix-darwin system config (homebrew, java)
 overlays/               nixpkgs overlays (NUR, emacs-overlay)
 bin/                    scripts, linked to ~/.bin
-wallpaper/              linked to ~/.local/share/wallpaper
 docs/macos.md           one-off macOS setup notes
 ```
 
@@ -76,6 +75,11 @@ nix fmt -- $(git ls-files '*.nix')   # or just let pre-commit do it
   `programs.niri`, greetd, drivers, and `vim`/`wget` so a broken home-manager
   generation is still repairable. User-facing apps (ghostty, noctalia,
   firefox, claude-code) are installed from here.
+- Wallpapers aren't in this repo. noctalia rotates through
+  `~/Pictures/Wallpapers`; with `my.wallpapers.repo` set (see
+  `modules/home/linux/wallpaper.nix`), every switch clones or pulls that git
+  repo into it. Unset, or without access to the repo, the folder is left for
+  you to fill.
 - noctalia (v5) is configured from `modules/home/linux/noctalia/*.toml`. The
   Settings UI writes `~/.local/state/noctalia/settings.toml`, which overrides
   them, so change those keys in the repo rather than the UI.

@@ -1,6 +1,6 @@
-# ../wallpaper.nix populates this folder from the repo; default.nix fills in
-# its absolute path, and turns per_monitor_directories on (adding a section
-# per monitor) when my.noctalia.wallpaperMonitors is set.
+# ../wallpaper.nix keeps this folder synced with my.wallpapers.repo;
+# default.nix fills in its absolute path, and turns per_monitor_directories
+# on (adding a section per monitor) when my.noctalia.wallpaperMonitors is set.
 [wallpaper]
 enabled = true
 directory = "@wallpapers@"
